@@ -336,6 +336,163 @@
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+
+  /* ── TIMELINE COLLAPSIBLE ── */
+  .tl-toggle-wrap {
+    padding: 28px 48px 0;
+  }
+  .tl-toggle-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 11px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: var(--shadow);
+    user-select: none;
+  }
+  .tl-toggle-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+  .tl-toggle-btn.open { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+  .tl-toggle-btn .tl-arrow {
+    display: inline-block;
+    transition: transform .28s cubic-bezier(.4,0,.2,1);
+    font-style: normal;
+  }
+  .tl-toggle-btn.open .tl-arrow { transform: rotate(90deg); }
+
+  .tl-panel {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s;
+    opacity: 0;
+  }
+  .tl-panel.open { max-height: 1200px; opacity: 1; }
+
+  .tl-inner {
+    margin: 16px 48px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  /* timeline grid */
+  .tl-grid {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .tl-table {
+    min-width: 980px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* month header row */
+  .tl-month-row th {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-muted);
+    background: var(--surface2);
+    font-weight: 600;
+  }
+  .tl-month-row th.tl-label-col {
+    width: 160px; min-width: 160px;
+    text-align: left; padding-left: 20px;
+    border-right: 1px solid var(--border);
+    color: transparent; /* empty corner */
+    background: var(--surface);
+  }
+  .tl-month-row th.month-may  { color: #5b47e0; background: rgba(91,71,224,.07); }
+  .tl-month-row th.month-jun  { color: #0880a0; background: rgba(8,128,160,.07); }
+  .tl-month-row th.month-jul  { color: #1a9e62; background: rgba(26,158,98,.07); }
+  .tl-month-row th.month-ago  { color: #b04a08; background: rgba(176,74,8,.08); }
+  .tl-month-row th.month-sep  { color: #b02020; background: rgba(176,32,32,.07); }
+
+  [data-theme="dark"] .tl-month-row th.month-may  { color: #a89fff; background: rgba(91,71,224,.13); }
+  [data-theme="dark"] .tl-month-row th.month-jun  { color: #5bcce6; background: rgba(91,204,230,.08); }
+  [data-theme="dark"] .tl-month-row th.month-jul  { color: #4ecb8d; background: rgba(78,203,141,.08); }
+  [data-theme="dark"] .tl-month-row th.month-ago  { color: #fb923c; background: rgba(251,146,60,.08); }
+  [data-theme="dark"] .tl-month-row th.month-sep  { color: #f87171; background: rgba(248,113,113,.08); }
+
+  /* category rows */
+  .tl-cat-row td {
+    vertical-align: top;
+    padding: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .tl-cat-row:last-child td { border-bottom: none; }
+
+  .tl-cat-label {
+    width: 160px; min-width: 160px;
+    padding: 14px 16px 14px 20px;
+    border-right: 1px solid var(--border);
+    vertical-align: middle !important;
+  }
+  .tl-cat-name {
+    font-size: 11.5px; font-weight: 600;
+    line-height: 1.3;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tl-cat-badge {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  .tl-month-col {
+    position: relative;
+    padding: 10px 8px;
+    vertical-align: top;
+    min-width: 130px;
+  }
+  /* vertical dividers between months */
+  .tl-month-col:not(:last-child) {
+    border-right: 1px dashed var(--border);
+  }
+
+  /* task dot + label */
+  .tl-tasks { display: flex; flex-direction: column; gap: 8px; }
+  .tl-task {
+    display: flex; align-items: flex-start; gap: 6px;
+    font-size: 11px; line-height: 1.35; color: var(--text-dim);
+  }
+  .tl-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .tl-task-text { }
+  .tl-date-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    display: block; margin-bottom: 2px;
+  }
+
+  /* legend */
+  .tl-legend {
+    display: flex; flex-wrap: wrap; gap: 12px 20px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .tl-legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--text-muted);
+  }
+  .tl-legend-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .tl-toggle-wrap { padding-left: 20px; padding-right: 20px; }
+    .tl-inner { margin-left: 20px; margin-right: 20px; }
+  }
 </style>
 </head>
 <body>
@@ -375,6 +532,36 @@
     </div>
   </div>
 </header>
+
+<!-- ── TIMELINE COLLAPSIBLE ── -->
+<div class="tl-toggle-wrap">
+  <button class="tl-toggle-btn" id="tlBtn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span class="tl-arrow">▶</span>
+    Ver línea de tiempo
+  </button>
+</div>
+
+<div class="tl-panel" id="tlPanel">
+  <div class="tl-inner">
+    <div class="tl-grid">
+      <table class="tl-table" id="tlTable">
+        <thead>
+          <tr class="tl-month-row">
+            <th class="tl-label-col"></th>
+            <th class="month-may" colspan="1">Mayo 2025</th>
+            <th class="month-jun" colspan="1">Junio 2025</th>
+            <th class="month-jul" colspan="1">Julio 2025</th>
+            <th class="month-ago" colspan="1">Agosto 2025</th>
+            <th class="month-sep" colspan="1">Septiembre 2025</th>
+          </tr>
+        </thead>
+        <tbody id="tlBody"></tbody>
+      </table>
+    </div>
+    <div class="tl-legend" id="tlLegend"></div>
+  </div>
+</div>
 
 <div class="toolbar">
   <div class="search-wrap">
@@ -720,6 +907,106 @@ document.getElementById('dlBtn').addEventListener('click', () => {
 });
 
 render();
+
+// ── TIMELINE ──
+const TL_CATS = [
+  { key: "Gestión de partes",                    label: "1. Gestión de Partes",                   colorVar: "--cat-partes"    },
+  { key: "Valuación contable",                    label: "2. Valuación Contable",                  colorVar: "--cat-valuacion" },
+  { key: "Migración de Inventario",               label: "3. Migración de Inventario",             colorVar: "--cat-migracion" },
+  { key: "Posiciones arancelarias e impuestos",   label: "4. Posiciones Arancelarias",             colorVar: "--cat-arancel"   },
+  { key: "Facturación",                           label: "5. Facturación",                         colorVar: "--cat-factura"   },
+  { key: "Política de precios",                   label: "6. Política de Precios",                 colorVar: "--cat-precios"   },
+  { key: "Clientes y cuentas corrientes",         label: "7. Clientes y Cuentas Corrientes",       colorVar: "--cat-clientes"  },
+  { key: "Salida 2da etapa",                      label: "Salida 2da Etapa",                       colorVar: "--cat-salida2"   },
+  { key: "Salida 3ra etapa",                      label: "Salida 3ra Etapa",                       colorVar: "--cat-salida3"   },
+];
+
+const TL_MONTHS = [
+  { key: "may", label: "mayo",   num: 4  },
+  { key: "jun", label: "jun",    num: 5  },
+  { key: "jul", label: "jul",    num: 6  },
+  { key: "ago", label: "ago",    num: 7  },
+  { key: "sep", label: "sep",    num: 8  },
+];
+
+function taskMonth(dateStr) {
+  if (!dateStr) return null;
+  const mES = {may:4,jun:5,jul:6,ago:7,sep:8};
+  const m = dateStr.match(/^(\d{2})-([a-záéíóú]{3})$/i);
+  if (!m) return null;
+  return mES[m[2].toLowerCase()];
+}
+
+function buildTimeline() {
+  const body = document.getElementById('tlBody');
+  body.innerHTML = '';
+
+  TL_CATS.forEach(cat => {
+    const catColor = `var(${cat.colorVar})`;
+    const tr = document.createElement('tr');
+    tr.className = 'tl-cat-row';
+
+    // label cell
+    const labelTd = document.createElement('td');
+    labelTd.className = 'tl-cat-label';
+    labelTd.innerHTML = `<div class="tl-cat-name">
+      <span class="tl-cat-badge" style="background:${catColor}"></span>
+      <span style="color:${catColor}">${cat.label}</span>
+    </div>`;
+    tr.appendChild(labelTd);
+
+    // month cells
+    TL_MONTHS.forEach(month => {
+      const td = document.createElement('td');
+      td.className = 'tl-month-col';
+
+      const tasks = TASKS.filter(t => t.cat === cat.key && taskMonth(t.date) === month.num);
+      if (tasks.length === 0) {
+        td.innerHTML = '';
+      } else {
+        const wrap = document.createElement('div');
+        wrap.className = 'tl-tasks';
+        tasks.forEach(t => {
+          const item = document.createElement('div');
+          item.className = 'tl-task';
+          item.innerHTML = `
+            <span class="tl-dot" style="background:${catColor}"></span>
+            <span class="tl-task-text">
+              <span class="tl-date-label" style="color:${catColor}">${t.date}</span>
+              ${t.title}
+            </span>
+          `;
+          wrap.appendChild(item);
+        });
+        td.appendChild(wrap);
+      }
+      tr.appendChild(td);
+    });
+
+    body.appendChild(tr);
+  });
+
+  // Legend
+  const legend = document.getElementById('tlLegend');
+  legend.innerHTML = '<span style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-right:4px">Referencias:</span>';
+  TL_CATS.forEach(cat => {
+    const item = document.createElement('div');
+    item.className = 'tl-legend-item';
+    item.innerHTML = `<span class="tl-legend-dot" style="background:var(${cat.colorVar})"></span>${cat.label}`;
+    legend.appendChild(item);
+  });
+}
+
+// Toggle
+const tlBtn   = document.getElementById('tlBtn');
+const tlPanel = document.getElementById('tlPanel');
+let tlBuilt   = false;
+
+tlBtn.addEventListener('click', () => {
+  const isOpen = tlPanel.classList.toggle('open');
+  tlBtn.classList.toggle('open', isOpen);
+  if (isOpen && !tlBuilt) { buildTimeline(); tlBuilt = true; }
+});
 </script>
 </body>
 </html>
