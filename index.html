@@ -1,159 +1,3 @@
-
-Claude terminó la respuesta
-Necesito un html que contenga esta lista de tareas como gestion de un proyecto. Además se tiene que poder filtrar y ordenar
-
-Título principal    Subtítulo    Comentarios    Responsables    Fecha necesidad
-Gestión de partes    Cierre de inventario físico de Service        Ángel Graneros / Erick Pineda    05-jun
-Gestión de partes    Matching de códigos Ciber vs. Epicor para detectar partes a crear        Maximiliano Sanchez Almeida / Debora Acuña    20-may
-Gestión de partes    Definir stock que migra, scrap y obsoletos post inventario        Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda    10-jun
-Gestión de partes    Registrar previamente en Ciber todos los ajustes de stock        Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda    10-jun
-Gestión de partes    Validar posible restricción aduanera para placas desde Río Grande        Julieta Franco / Fábrica    27-may
-Gestión de partes    Procedimiento escrito de compra y gestión de partes de Service (vital parts, FOC, CBUs), incluyendo la lógica de clasificación de códigos (comprados vs. fabricados).        Julieta Franco / Planificación    27-may
-Valuación contable    Definir si el inventario migra con los costos actuales de Ciber o recálculo de todos los costos.        Claudio Fernandez / Gabriela Duarte / Erick Pineda    27-may
-Valuación contable    Validación y documentación con Auditoría (E&Y)        Claudio Fernandez / Gabriela Duarte / Erick Pineda    01-jun
-Migración de Inventario    DMT migración Epicor Piloto        Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas    15-jun
-Migración de Inventario    DMT migración Epicor Productivo        Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas    01-jul
-Posiciones arancelarias e impuestos    Carga de posiciones arancelarias en Epicor de todas las partes vendibles        Julieta Franco / Comex    12-jun
-Posiciones arancelarias e impuestos    Carga inicial masiva (DMT)        Sistemas    12-jun
-Posiciones arancelarias e impuestos    Definir integración Epicor ↔ Tarifa (post salida SF)        Julieta Franco / Comex    01-sep
-Posiciones arancelarias e impuestos    Definir circuito de actualización y comunicación de cambios arancelarios.        Julieta Franco / Elizabeth Oberkersch    19-jun
-Posiciones arancelarias e impuestos    Verificar situación impositiva de repuestos disponibles para la venta        Elizabeth Oberkersch    12-jun
-Facturación    Definir modelo de facturación Epicor y revisión de facturas actuales    "La facturación pasará al modelo Epicor (Radio Victoria).
-Revisión de muestra de facturas actuales.
-Pendiente definir si repuesto, mano de obra y gasto de envío se facturan separados o integrados."    Elizabeth Oberkersch    26-may
-Política de precios    Definir política de precios, listas B2B/B2C y criterios de cálculo        Julieta Franco / Claudio Fernandez / Gabriela Duarte / Maximiliano Sanchez Almeida    10-jun
-Política de precios    Carga de nuevas listas de precio en Epicor (Piloto)        Claudio Fernandez / Gabriela Duarte    15-jun
-Política de precios    Carga de nuevas listas de precio en Epicor (Producción)        Claudio Fernandez / Gabriela Duarte    19-jun
-Clientes y cuentas corrientes    Envío de listado de clientes activos    "Se migrarán clientes con movimientos en los últimos 18 meses y comprobantes abiertos.
-La cuenta corriente histórica permanecerá en Ciber."    Maximiliano Sanchez Almeida    20-may
-Clientes y cuentas corrientes    Validación impositiva        Elizabeth Oberkersch / Patricio Cetrángolo    27-may
-Clientes y cuentas corrientes    Alta masiva de clientes en Epicor (Piloto)        Patricio Cetrángolo    01-jun
-Clientes y cuentas corrientes    Alta masiva de clientes en Epicor (Productivo)        Patricio Cetrángolo    29-jun
-Clientes y cuentas corrientes    Migración de saldo de clientes a Epicor (Piloto)        Patricio Cetrángolo / Maximiliano Sanchez Almeida    01-jun
-Clientes y cuentas corrientes    Migración de saldo de clientes a Epicor (Productivo)        Patricio Cetrángolo / Maximiliano Sanchez Almeida    01-jul
-Salida 2da etapa    B2B + RMA            01-ago
-Salida 3ra etapa    Defensa consumidor + Bot            01-sep
-
-Mostrar menos
-4:08 p.m.
-
-Archivo visualizado, creó un archivo, archivo leído
-Archivo visualizado, creó un archivo, archivo leído
-Acá tenés el HTML con las 27 tareas del proyecto. Lo que incluye:
-
-Filtros disponibles:
-
-🔍 Buscador libre (filtra por tarea, responsable o comentario)
-👤 Selector de responsable individual
-🏷️ Pills por categoría (9 categorías con colores distintos)
-Ordenamiento:
-
-Por fecha, categoría o subtítulo (desde los botones de la toolbar)
-También haciendo clic directo en el encabezado de cada columna
-Toggle ascendente/descendente en cada uno
-Extras:
-
-Las tareas con comentarios (Facturación y Clientes) se pueden expandir haciendo clic en la fila
-El color de la fecha cambia según urgencia (rojo = vencida/próxima, naranja = en 3 semanas, verde = OK, gris = lejos)
-Stats en el header: total de tareas, categorías, responsables y próxima fecha pendiente
-
-Project tasks
-Código · HTML 
-?
-
-4:12 p.m.
-¿En qué te puedo ayudar?
-
-como inserto esto en una pagina de sharepoint?
-
-4:21 p.m.
-Hay dos formas principales, según los permisos que tengas:
-
-Opción 1 — Embed HTML directo (más simple)
-
-Abrí la página de SharePoint en modo edición
-Agregá un webpart de tipo "Insertar código" (o "Embed")
-Pegá el HTML completo ahí adentro
-Guardá y publicá
-⚠️ Esta opción suele estar deshabilitada por defecto en SharePoint Online moderno por seguridad (bloquea scripts externos).
-
-Opción 2 — Script Editor vía SPFx o Classic (recomendado si tenés permisos)
-
-Si usás SharePoint clásico, podés usar el webpart "Script Editor" que sí acepta HTML + JS completo.
-
-Opción 3 — La más confiable en SharePoint Online moderno
-
-Subí el archivo project_tasks.html a una biblioteca de documentos (o a un sitio estático)
-Usá un webpart de "Visor de archivo" o incrustalo con un <iframe> dentro de un Embed webpart:
-html
-<iframe src="URL_DEL_ARCHIVO" width="100%" height="800px" frameborder="0"></iframe>
-Opción 4 — Power Apps (si el resto no funciona)
-
-Convertirlo en una Power App embebida, aunque sería más trabajo.
-
-¿Tenés SharePoint Online moderno o clásico? ¿Y tenés permisos de administrador del sitio? Con eso te digo exactamente qué pasos seguir.
-
-como lo publico en giuthub?
-
-4:27 p.m.
-Pasos para publicar el HTML en GitHub Pages (gratis, rápido):
-
-1. Crear un repositorio
-
-Entrá a github.com y logueate
-Click en "New repository"
-Ponele un nombre, ej: proyecto-epicor
-Dejalo en Public
-Tick en "Add a README file"
-Click "Create repository"
-2. Subir el archivo
-
-Dentro del repo, click en "Add file" → "Upload files"
-Subí el project_tasks.html
-Importante: renombralo a index.html antes de subirlo (o hacelo directo en GitHub)
-Click "Commit changes"
-3. Activar GitHub Pages
-
-Ir a Settings del repositorio
-En el menú izquierdo: Pages
-En "Source" seleccioná "Deploy from a branch"
-Branch: main, carpeta: / (root)
-Click Save
-4. Acceder a tu página
-
-En unos segundos (a veces 1-2 minutos) va a estar disponible en:
-
-https://TU_USUARIO.github.io/proyecto-epicor/
-Esa URL la podés meter en un <iframe> en SharePoint:
-
-html
-<iframe src="https://TU_USUARIO.github.io/proyecto-epicor/" 
-        width="100%" height="850px" frameborder="0"></iframe>
-¿Tenés cuenta de GitHub ya creada?
-
-Podés hacerlo en modo claro y que se pueda cambiar a este oscuro?
-
-4:31 p.m.
-
-Se crearon 2 archivos, archivo visualizado, ejecutó un comando
-Se crearon 2 archivos, archivo visualizado, ejecutó un comando
-Listo. Ahora arranca en modo claro y tiene el toggle en la esquina superior derecha del header para cambiar a oscuro. Algunos detalles:
-
-El ícono del botón cambia entre ☀️ y 🌙 según el tema activo
-La preferencia se guarda en localStorage, así que recuerda el modo elegido entre sesiones
-Los colores de fechas, pills y toda la interfaz se ajustan correctamente en ambos temas
-La transición entre modos es suave (0.3s)
-
-Project tasks
-Código · HTML 
-
-
-
-
-Claude es IA y puede cometer errores. Por favor, verifica nuevamente las respuestas.
-Project tasks · HTML
-Copiar
-
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
 <head>
@@ -192,7 +36,7 @@ Copiar
     --cat-salida2: #b04a08;
     --cat-salida3: #b02020;
   }
- 
+
   /* ── DARK THEME ── */
   [data-theme="dark"] {
     --bg: #0e0f14;
@@ -223,9 +67,9 @@ Copiar
     --cat-salida2: #fb923c;
     --cat-salida3: #f87171;
   }
- 
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--bg);
@@ -235,7 +79,7 @@ Copiar
     overflow-x: hidden;
     transition: background .3s, color .3s;
   }
- 
+
   /* ── THEME TOGGLE ── */
   .theme-toggle {
     position: absolute;
@@ -281,7 +125,7 @@ Copiar
   }
   .t-switch input:checked ~ .t-thumb { transform: translateX(22px); }
   .t-icon { user-select: none; }
- 
+
   /* ── HEADER ── */
   header {
     position: relative;
@@ -326,12 +170,12 @@ Copiar
   .stat-value { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--text); line-height: 1; }
   .stat-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
   .stat-divider { width: 1px; background: var(--border); align-self: stretch; transition: background .3s; }
- 
+
   /* ── TOOLBAR ── */
   .toolbar { padding: 24px 48px 0; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 380px; }
   .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
- 
+
   input[type="search"], select {
     width: 100%;
     background: var(--surface);
@@ -357,7 +201,7 @@ Copiar
     min-width: 170px;
   }
   select option { background: var(--surface); }
- 
+
   .sort-btn {
     display: flex; align-items: center; gap: 6px;
     padding: 10px 16px;
@@ -372,10 +216,10 @@ Copiar
   .sort-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
   .sort-btn svg { transition: transform .25s; }
   .sort-btn.desc svg { transform: rotate(180deg); }
- 
+
   .count-badge { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); padding: 6px 0; margin-left: auto; }
   .count-badge span { color: var(--text); font-weight: 500; }
- 
+
   /* ── PILLS ── */
   .cat-pills { padding: 16px 48px 0; display: flex; gap: 8px; flex-wrap: wrap; }
   .pill {
@@ -396,11 +240,11 @@ Copiar
   .pill[data-cat="Clientes y cuentas corrientes"].active { background: var(--cat-clientes); }
   .pill[data-cat="Salida 2da etapa"].active { background: var(--cat-salida2); }
   .pill[data-cat="Salida 3ra etapa"].active { background: var(--cat-salida3); }
- 
+
   /* ── TABLE ── */
   .table-wrap { padding: 24px 48px 0; overflow-x: auto; }
   table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13.5px; }
- 
+
   thead th {
     font-family: 'DM Mono', monospace; font-size: 10.5px;
     letter-spacing: 0.1em; text-transform: uppercase;
@@ -418,23 +262,23 @@ Copiar
   thead th .sort-icon { opacity: .4; transition: opacity .15s, transform .2s; }
   thead th.sort-active .sort-icon { opacity: 1; }
   thead th.sort-desc .sort-icon { transform: rotate(180deg); }
- 
+
   tbody tr { transition: background .12s; }
   tbody tr.clickable { cursor: pointer; }
   tbody tr:hover td { background: var(--surface2) !important; }
   tbody tr.expanded td { background: var(--surface2) !important; }
- 
+
   td {
     padding: 14px 16px; border-bottom: 1px solid var(--border);
     vertical-align: top; background: var(--surface);
     transition: background .15s, border-color .3s;
   }
- 
+
   .cat-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; margin-top: 3px; }
   .cat-cell { display: flex; align-items: flex-start; }
   .cat-text { font-weight: 500; color: var(--text-dim); font-size: 13px; }
   .title-cell { font-weight: 500; color: var(--text); max-width: 280px; }
- 
+
   .resp-tag {
     display: inline-block; background: var(--surface2);
     border: 1px solid var(--border); border-radius: 4px;
@@ -442,16 +286,16 @@ Copiar
     color: var(--text-dim); white-space: nowrap;
     transition: background .3s, border-color .3s, color .3s;
   }
- 
+
   .date-cell { font-family: 'DM Mono', monospace; font-size: 12.5px; white-space: nowrap; }
   .date-urgent { color: var(--accent2); font-weight: 600; }
   .date-soon   { color: var(--orange); }
   .date-ok     { color: var(--green); }
   .date-future { color: var(--text-muted); }
   .date-none   { color: var(--border-light); font-style: italic; }
- 
+
   .has-comment { color: var(--accent); font-size: 12px; }
- 
+
   .expand-row td { background: var(--surface2) !important; padding: 0; border-bottom: 1px solid var(--border); }
   .expand-content {
     padding: 18px 24px; font-size: 13px; color: var(--text-dim); line-height: 1.7;
@@ -459,29 +303,29 @@ Copiar
     margin: 0 16px 16px; border-radius: 0 6px 6px 0;
     background: var(--accent-glow); white-space: pre-line;
   }
- 
+
   .no-results { text-align: center; padding: 64px 24px; color: var(--text-muted); font-size: 15px; background: var(--surface); }
   .no-results svg { display: block; margin: 0 auto 16px; opacity: .3; }
- 
+
   @media (max-width: 768px) {
     header { padding: 40px 20px 28px; }
     .theme-toggle { top: 16px; right: 20px; }
     .toolbar, .cat-pills, .table-wrap { padding-left: 20px; padding-right: 20px; }
     .header-stats { gap: 20px; }
   }
- 
+
   .fade-row { animation: fadeIn .18s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
   .toggle-icon-row { transition: transform .2s; display: inline-block; }
   tr.expanded .toggle-icon-row { transform: rotate(90deg); }
- 
+
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
 </style>
 </head>
 <body>
- 
+
 <header>
   <div class="theme-toggle">
     <span class="theme-label" id="themeLabel">Modo claro</span>
@@ -491,7 +335,7 @@ Copiar
       <div class="t-thumb"><span class="t-icon" id="themeIcon">☀️</span></div>
     </label>
   </div>
- 
+
   <div class="header-label">Proyecto · Migración Service → Epicor</div>
   <h1>Plan de <em>Actividades</em></h1>
   <div class="header-sub">Seguimiento de tareas críticas para la salida a producción</div>
@@ -517,7 +361,7 @@ Copiar
     </div>
   </div>
 </header>
- 
+
 <div class="toolbar">
   <div class="search-wrap">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -538,9 +382,9 @@ Copiar
   </button>
   <span class="count-badge">Mostrando <span id="visibleCount">27</span> de <span id="totalCount">27</span></span>
 </div>
- 
+
 <div class="cat-pills" id="catPills"></div>
- 
+
 <div class="table-wrap">
   <table>
     <thead>
@@ -560,14 +404,14 @@ Copiar
     Sin resultados para la búsqueda actual.
   </div>
 </div>
- 
+
 <script>
 // ── Theme ──
 const html = document.documentElement;
 const themeCheck = document.getElementById('themeCheck');
 const themeLabel = document.getElementById('themeLabel');
 const themeIcon  = document.getElementById('themeIcon');
- 
+
 const applyTheme = t => {
   html.setAttribute('data-theme', t);
   themeCheck.checked = t === 'dark';
@@ -575,13 +419,13 @@ const applyTheme = t => {
   themeIcon.textContent  = t === 'dark' ? '🌙' : '☀️';
   try { localStorage.setItem('theme', t); } catch(e) {}
 };
- 
+
 let savedTheme = 'light';
 try { savedTheme = localStorage.getItem('theme') || 'light'; } catch(e) {}
 applyTheme(savedTheme);
- 
+
 themeCheck.addEventListener('change', () => applyTheme(themeCheck.checked ? 'dark' : 'light'));
- 
+
 // ── Data ──
 const TASKS = [
   { cat: "Gestión de partes", title: "Cierre de inventario físico de Service", resp: "Ángel Graneros / Erick Pineda", date: "05-jun", comment: "" },
@@ -612,7 +456,7 @@ const TASKS = [
   { cat: "Salida 2da etapa", title: "B2B + RMA", resp: "", date: "01-ago", comment: "" },
   { cat: "Salida 3ra etapa", title: "Defensa consumidor + Bot", resp: "", date: "01-sep", comment: "" },
 ];
- 
+
 const CAT_COLORS = {
   "Gestión de partes": "var(--cat-partes)",
   "Valuación contable": "var(--cat-valuacion)",
@@ -624,7 +468,7 @@ const CAT_COLORS = {
   "Salida 2da etapa": "var(--cat-salida2)",
   "Salida 3ra etapa": "var(--cat-salida3)",
 };
- 
+
 function parseDate(str) {
   if (!str) return null;
   const mES = {ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11};
@@ -633,7 +477,7 @@ function parseDate(str) {
   const mo = mES[m[2].toLowerCase()];
   return mo !== undefined ? new Date(2025, mo, parseInt(m[1])) : null;
 }
- 
+
 function dateClass(str) {
   const d = parseDate(str);
   if (!d) return 'date-none';
@@ -644,9 +488,9 @@ function dateClass(str) {
   if (diff <= 60) return 'date-ok';
   return 'date-future';
 }
- 
+
 let sortCol = 'date', sortDir = 1, activeCat = 'all', searchQ = '', respQ = '', expandedRow = null;
- 
+
 // Responsables
 const allPersons = new Set();
 TASKS.forEach(t => t.resp.split('/').forEach(p => { const n = p.trim(); if (n) allPersons.add(n); }));
@@ -655,7 +499,7 @@ const respFilterEl = document.getElementById('respFilter');
   const o = document.createElement('option'); o.value = p; o.textContent = p;
   respFilterEl.appendChild(o);
 });
- 
+
 // Pills
 const cats = [...new Set(TASKS.map(t => t.cat))];
 const pillsEl = document.getElementById('catPills');
@@ -673,21 +517,21 @@ pillsEl.addEventListener('click', e => {
   e.target.classList.add('active');
   expandedRow = null; render();
 });
- 
+
 // Sort
 document.getElementById('sortDate').addEventListener('click', () => toggleSort('date'));
 document.getElementById('sortCat').addEventListener('click',  () => toggleSort('cat'));
 document.getElementById('sortTitle').addEventListener('click',() => toggleSort('title'));
 document.querySelectorAll('thead th[data-col]').forEach(th => th.addEventListener('click', () => toggleSort(th.dataset.col)));
- 
+
 function toggleSort(col) {
   if (sortCol === col) sortDir *= -1; else { sortCol = col; sortDir = 1; }
   expandedRow = null; render();
 }
- 
+
 document.getElementById('searchInput').addEventListener('input', e => { searchQ = e.target.value.toLowerCase(); expandedRow = null; render(); });
 respFilterEl.addEventListener('change', e => { respQ = e.target.value; expandedRow = null; render(); });
- 
+
 function getFiltered() {
   return TASKS.filter(t => {
     if (activeCat !== 'all' && t.cat !== activeCat) return false;
@@ -696,7 +540,7 @@ function getFiltered() {
     return true;
   });
 }
- 
+
 function getSorted(arr) {
   return [...arr].sort((a, b) => {
     let va, vb;
@@ -713,16 +557,16 @@ function getSorted(arr) {
     return 0;
   });
 }
- 
+
 function renderResp(resp) {
   if (!resp) return '<span style="color:var(--border-light);font-size:12px">—</span>';
   return resp.split('/').map(p => `<span class="resp-tag">${p.trim()}</span>`).join('');
 }
- 
+
 function render() {
   const filtered = getFiltered();
   const sorted = getSorted(filtered);
- 
+
   document.querySelectorAll('.sort-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.sort === sortCol);
     b.classList.toggle('desc', b.dataset.sort === sortCol && sortDir === -1);
@@ -731,19 +575,19 @@ function render() {
     th.classList.toggle('sort-active', th.dataset.col === sortCol);
     th.classList.toggle('sort-desc', th.dataset.col === sortCol && sortDir === -1);
   });
- 
+
   const body = document.getElementById('taskBody');
   body.innerHTML = '';
   document.getElementById('noResults').style.display = sorted.length ? 'none' : 'block';
   document.getElementById('visibleCount').textContent = sorted.length;
   document.getElementById('totalCount').textContent = TASKS.length;
- 
+
   const upcoming = sorted.map(t => parseDate(t.date)).filter(Boolean).filter(d => d >= new Date()).sort((a,b)=>a-b);
   if (upcoming.length) {
     const u = upcoming[0];
     document.getElementById('stat-upcoming').textContent = `${String(u.getDate()).padStart(2,'0')}/${String(u.getMonth()+1).padStart(2,'0')}`;
   }
- 
+
   sorted.forEach((task, idx) => {
     const color = CAT_COLORS[task.cat] || 'var(--accent)';
     const dc = dateClass(task.date);
@@ -751,7 +595,7 @@ function render() {
     tr.className = 'fade-row';
     if (task.comment) tr.classList.add('clickable');
     if (expandedRow === idx) tr.classList.add('expanded');
- 
+
     tr.innerHTML = `
       <td style="text-align:center;color:var(--text-muted);width:36px">
         ${task.comment ? '<span class="toggle-icon-row" style="font-size:11px">▶</span>' : ''}
@@ -762,7 +606,7 @@ function render() {
       <td class="date-cell ${dc}">${task.date || '—'}</td>
       <td>${task.comment ? '<span class="has-comment">💬 Ver nota</span>' : '<span style="color:var(--border-light);font-size:12px">—</span>'}</td>
     `;
- 
+
     if (task.comment) {
       tr.addEventListener('click', () => {
         const existing = body.querySelector('.expand-row');
@@ -782,9 +626,8 @@ function render() {
     body.appendChild(tr);
   });
 }
- 
+
 render();
 </script>
 </body>
 </html>
- 
