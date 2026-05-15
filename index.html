@@ -1,12 +1,200 @@
+
+Claude terminó la respuesta
+Necesito un html que contenga esta lista de tareas como gestion de un proyecto. Además se tiene que poder filtrar y ordenar
+
+Título principal    Subtítulo    Comentarios    Responsables    Fecha necesidad
+Gestión de partes    Cierre de inventario físico de Service        Ángel Graneros / Erick Pineda    05-jun
+Gestión de partes    Matching de códigos Ciber vs. Epicor para detectar partes a crear        Maximiliano Sanchez Almeida / Debora Acuña    20-may
+Gestión de partes    Definir stock que migra, scrap y obsoletos post inventario        Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda    10-jun
+Gestión de partes    Registrar previamente en Ciber todos los ajustes de stock        Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda    10-jun
+Gestión de partes    Validar posible restricción aduanera para placas desde Río Grande        Julieta Franco / Fábrica    27-may
+Gestión de partes    Procedimiento escrito de compra y gestión de partes de Service (vital parts, FOC, CBUs), incluyendo la lógica de clasificación de códigos (comprados vs. fabricados).        Julieta Franco / Planificación    27-may
+Valuación contable    Definir si el inventario migra con los costos actuales de Ciber o recálculo de todos los costos.        Claudio Fernandez / Gabriela Duarte / Erick Pineda    27-may
+Valuación contable    Validación y documentación con Auditoría (E&Y)        Claudio Fernandez / Gabriela Duarte / Erick Pineda    01-jun
+Migración de Inventario    DMT migración Epicor Piloto        Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas    15-jun
+Migración de Inventario    DMT migración Epicor Productivo        Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas    01-jul
+Posiciones arancelarias e impuestos    Carga de posiciones arancelarias en Epicor de todas las partes vendibles        Julieta Franco / Comex    12-jun
+Posiciones arancelarias e impuestos    Carga inicial masiva (DMT)        Sistemas    12-jun
+Posiciones arancelarias e impuestos    Definir integración Epicor ↔ Tarifa (post salida SF)        Julieta Franco / Comex    01-sep
+Posiciones arancelarias e impuestos    Definir circuito de actualización y comunicación de cambios arancelarios.        Julieta Franco / Elizabeth Oberkersch    19-jun
+Posiciones arancelarias e impuestos    Verificar situación impositiva de repuestos disponibles para la venta        Elizabeth Oberkersch    12-jun
+Facturación    Definir modelo de facturación Epicor y revisión de facturas actuales    "La facturación pasará al modelo Epicor (Radio Victoria).
+Revisión de muestra de facturas actuales.
+Pendiente definir si repuesto, mano de obra y gasto de envío se facturan separados o integrados."    Elizabeth Oberkersch    26-may
+Política de precios    Definir política de precios, listas B2B/B2C y criterios de cálculo        Julieta Franco / Claudio Fernandez / Gabriela Duarte / Maximiliano Sanchez Almeida    10-jun
+Política de precios    Carga de nuevas listas de precio en Epicor (Piloto)        Claudio Fernandez / Gabriela Duarte    15-jun
+Política de precios    Carga de nuevas listas de precio en Epicor (Producción)        Claudio Fernandez / Gabriela Duarte    19-jun
+Clientes y cuentas corrientes    Envío de listado de clientes activos    "Se migrarán clientes con movimientos en los últimos 18 meses y comprobantes abiertos.
+La cuenta corriente histórica permanecerá en Ciber."    Maximiliano Sanchez Almeida    20-may
+Clientes y cuentas corrientes    Validación impositiva        Elizabeth Oberkersch / Patricio Cetrángolo    27-may
+Clientes y cuentas corrientes    Alta masiva de clientes en Epicor (Piloto)        Patricio Cetrángolo    01-jun
+Clientes y cuentas corrientes    Alta masiva de clientes en Epicor (Productivo)        Patricio Cetrángolo    29-jun
+Clientes y cuentas corrientes    Migración de saldo de clientes a Epicor (Piloto)        Patricio Cetrángolo / Maximiliano Sanchez Almeida    01-jun
+Clientes y cuentas corrientes    Migración de saldo de clientes a Epicor (Productivo)        Patricio Cetrángolo / Maximiliano Sanchez Almeida    01-jul
+Salida 2da etapa    B2B + RMA            01-ago
+Salida 3ra etapa    Defensa consumidor + Bot            01-sep
+
+Mostrar menos
+4:08 p.m.
+
+Archivo visualizado, creó un archivo, archivo leído
+Archivo visualizado, creó un archivo, archivo leído
+Acá tenés el HTML con las 27 tareas del proyecto. Lo que incluye:
+
+Filtros disponibles:
+
+🔍 Buscador libre (filtra por tarea, responsable o comentario)
+👤 Selector de responsable individual
+🏷️ Pills por categoría (9 categorías con colores distintos)
+Ordenamiento:
+
+Por fecha, categoría o subtítulo (desde los botones de la toolbar)
+También haciendo clic directo en el encabezado de cada columna
+Toggle ascendente/descendente en cada uno
+Extras:
+
+Las tareas con comentarios (Facturación y Clientes) se pueden expandir haciendo clic en la fila
+El color de la fecha cambia según urgencia (rojo = vencida/próxima, naranja = en 3 semanas, verde = OK, gris = lejos)
+Stats en el header: total de tareas, categorías, responsables y próxima fecha pendiente
+
+Project tasks
+Código · HTML 
+?
+
+4:12 p.m.
+¿En qué te puedo ayudar?
+
+como inserto esto en una pagina de sharepoint?
+
+4:21 p.m.
+Hay dos formas principales, según los permisos que tengas:
+
+Opción 1 — Embed HTML directo (más simple)
+
+Abrí la página de SharePoint en modo edición
+Agregá un webpart de tipo "Insertar código" (o "Embed")
+Pegá el HTML completo ahí adentro
+Guardá y publicá
+⚠️ Esta opción suele estar deshabilitada por defecto en SharePoint Online moderno por seguridad (bloquea scripts externos).
+
+Opción 2 — Script Editor vía SPFx o Classic (recomendado si tenés permisos)
+
+Si usás SharePoint clásico, podés usar el webpart "Script Editor" que sí acepta HTML + JS completo.
+
+Opción 3 — La más confiable en SharePoint Online moderno
+
+Subí el archivo project_tasks.html a una biblioteca de documentos (o a un sitio estático)
+Usá un webpart de "Visor de archivo" o incrustalo con un <iframe> dentro de un Embed webpart:
+html
+<iframe src="URL_DEL_ARCHIVO" width="100%" height="800px" frameborder="0"></iframe>
+Opción 4 — Power Apps (si el resto no funciona)
+
+Convertirlo en una Power App embebida, aunque sería más trabajo.
+
+¿Tenés SharePoint Online moderno o clásico? ¿Y tenés permisos de administrador del sitio? Con eso te digo exactamente qué pasos seguir.
+
+como lo publico en giuthub?
+
+4:27 p.m.
+Pasos para publicar el HTML en GitHub Pages (gratis, rápido):
+
+1. Crear un repositorio
+
+Entrá a github.com y logueate
+Click en "New repository"
+Ponele un nombre, ej: proyecto-epicor
+Dejalo en Public
+Tick en "Add a README file"
+Click "Create repository"
+2. Subir el archivo
+
+Dentro del repo, click en "Add file" → "Upload files"
+Subí el project_tasks.html
+Importante: renombralo a index.html antes de subirlo (o hacelo directo en GitHub)
+Click "Commit changes"
+3. Activar GitHub Pages
+
+Ir a Settings del repositorio
+En el menú izquierdo: Pages
+En "Source" seleccioná "Deploy from a branch"
+Branch: main, carpeta: / (root)
+Click Save
+4. Acceder a tu página
+
+En unos segundos (a veces 1-2 minutos) va a estar disponible en:
+
+https://TU_USUARIO.github.io/proyecto-epicor/
+Esa URL la podés meter en un <iframe> en SharePoint:
+
+html
+<iframe src="https://TU_USUARIO.github.io/proyecto-epicor/" 
+        width="100%" height="850px" frameborder="0"></iframe>
+¿Tenés cuenta de GitHub ya creada?
+
+Podés hacerlo en modo claro y que se pueda cambiar a este oscuro?
+
+4:31 p.m.
+
+Se crearon 2 archivos, archivo visualizado, ejecutó un comando
+Se crearon 2 archivos, archivo visualizado, ejecutó un comando
+Listo. Ahora arranca en modo claro y tiene el toggle en la esquina superior derecha del header para cambiar a oscuro. Algunos detalles:
+
+El ícono del botón cambia entre ☀️ y 🌙 según el tema activo
+La preferencia se guarda en localStorage, así que recuerda el modo elegido entre sesiones
+Los colores de fechas, pills y toda la interfaz se ajustan correctamente en ambos temas
+La transición entre modos es suave (0.3s)
+
+Project tasks
+Código · HTML 
+
+
+
+
+Claude es IA y puede cometer errores. Por favor, verifica nuevamente las respuestas.
+Project tasks · HTML
+Copiar
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión de Proyecto — Migración Epicor</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
+  /* ── LIGHT THEME (default) ── */
+  :root, [data-theme="light"] {
+    --bg: #f5f6fa;
+    --surface: #ffffff;
+    --surface2: #eef0f7;
+    --border: #dde0ed;
+    --border-light: #c8ccdf;
+    --text: #1a1d2e;
+    --text-muted: #7b80a0;
+    --text-dim: #4a5070;
+    --accent: #3d63ff;
+    --accent-glow: rgba(61,99,255,0.10);
+    --accent2: #d63030;
+    --green: #1a9e62;
+    --yellow: #b88a00;
+    --orange: #c85a0a;
+    --header-grad1: rgba(61,99,255,0.07);
+    --header-grad2: rgba(61,99,255,0.03);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+    --th-bg: #f5f6fa;
+    --cat-partes: #5b47e0;
+    --cat-valuacion: #c4326e;
+    --cat-migracion: #1a9e62;
+    --cat-arancel: #a07800;
+    --cat-factura: #c85a0a;
+    --cat-precios: #0880a0;
+    --cat-clientes: #6d28d9;
+    --cat-salida2: #b04a08;
+    --cat-salida3: #b02020;
+  }
+ 
+  /* ── DARK THEME ── */
+  [data-theme="dark"] {
     --bg: #0e0f14;
     --surface: #14161e;
     --surface2: #1a1d28;
@@ -21,8 +209,10 @@
     --green: #4ecb8d;
     --yellow: #f5c842;
     --orange: #ff9554;
-
-    /* Category colors */
+    --header-grad1: rgba(91,127,255,0.12);
+    --header-grad2: rgba(91,127,255,0.05);
+    --shadow: none;
+    --th-bg: #0e0f14;
     --cat-partes: #7b6eff;
     --cat-valuacion: #ff6b9d;
     --cat-migracion: #4ecb8d;
@@ -33,9 +223,9 @@
     --cat-salida2: #fb923c;
     --cat-salida3: #f87171;
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--bg);
@@ -43,29 +233,75 @@
     min-height: 100vh;
     padding: 0 0 80px;
     overflow-x: hidden;
+    transition: background .3s, color .3s;
   }
-
+ 
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    position: absolute;
+    top: 32px; right: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 20;
+  }
+  .theme-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color .3s;
+    white-space: nowrap;
+  }
+  .t-switch {
+    position: relative;
+    width: 48px; height: 26px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .t-switch input { display: none; }
+  .t-track {
+    position: absolute; inset: 0;
+    background: var(--border);
+    border-radius: 100px;
+    transition: background .3s;
+  }
+  .t-switch input:checked ~ .t-track { background: var(--accent); }
+  .t-thumb {
+    position: absolute;
+    top: 4px; left: 4px;
+    width: 18px; height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    transition: transform .3s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; line-height: 1;
+  }
+  .t-switch input:checked ~ .t-thumb { transform: translateX(22px); }
+  .t-icon { user-select: none; }
+ 
   /* ── HEADER ── */
   header {
     position: relative;
     padding: 56px 48px 40px;
     border-bottom: 1px solid var(--border);
     overflow: hidden;
+    transition: border-color .3s;
   }
   header::before {
     content: '';
-    position: absolute;
-    top: -80px; left: -60px;
+    position: absolute; top: -80px; left: -60px;
     width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(91,127,255,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--header-grad1) 0%, transparent 70%);
     pointer-events: none;
   }
   header::after {
     content: '';
-    position: absolute;
-    top: -40px; right: 80px;
+    position: absolute; top: -40px; right: 80px;
     width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(91,127,255,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--header-grad2) 0%, transparent 70%);
     pointer-events: none;
   }
   .header-label {
@@ -83,67 +319,19 @@
     color: var(--text);
     margin-bottom: 8px;
   }
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-  .header-sub {
-    font-size: 14px;
-    color: var(--text-muted);
-    font-weight: 300;
-  }
-  .header-stats {
-    display: flex;
-    gap: 32px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-  }
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .stat-value {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    color: var(--text);
-    line-height: 1;
-  }
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .stat-divider {
-    width: 1px;
-    background: var(--border);
-    align-self: stretch;
-  }
-
+  h1 em { font-style: italic; color: var(--accent); }
+  .header-sub { font-size: 14px; color: var(--text-muted); font-weight: 300; }
+  .header-stats { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .stat { display: flex; flex-direction: column; gap: 4px; }
+  .stat-value { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--text); line-height: 1; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .stat-divider { width: 1px; background: var(--border); align-self: stretch; transition: background .3s; }
+ 
   /* ── TOOLBAR ── */
-  .toolbar {
-    padding: 24px 48px 0;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .search-wrap {
-    position: relative;
-    flex: 1;
-    min-width: 220px;
-    max-width: 380px;
-  }
-  .search-wrap svg {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    pointer-events: none;
-  }
+  .toolbar { padding: 24px 48px 0; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 380px; }
+  .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+ 
   input[type="search"], select {
     width: 100%;
     background: var(--surface);
@@ -152,17 +340,13 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 13.5px;
     border-radius: 8px;
-    transition: border-color .2s, box-shadow .2s;
     outline: none;
+    transition: border-color .2s, box-shadow .2s, background .3s, color .3s;
+    box-shadow: var(--shadow);
   }
-  input[type="search"] {
-    padding: 10px 14px 10px 40px;
-  }
+  input[type="search"] { padding: 10px 14px 10px 40px; }
   input[type="search"]::placeholder { color: var(--text-muted); }
-  input[type="search"]:focus, select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-  }
+  input[type="search"]:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
   select {
     padding: 10px 36px 10px 14px;
     appearance: none;
@@ -172,100 +356,61 @@
     cursor: pointer;
     min-width: 170px;
   }
-  select option { background: var(--surface2); }
-
+  select option { background: var(--surface); }
+ 
   .sort-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    display: flex; align-items: center; gap: 6px;
     padding: 10px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--surface); border: 1px solid var(--border);
     color: var(--text-dim);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all .2s;
-    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    border-radius: 8px; cursor: pointer;
+    transition: all .2s; white-space: nowrap;
+    box-shadow: var(--shadow);
   }
   .sort-btn:hover { border-color: var(--border-light); color: var(--text); }
   .sort-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
   .sort-btn svg { transition: transform .25s; }
   .sort-btn.desc svg { transform: rotate(180deg); }
-
-  .count-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-    padding: 6px 0;
-    margin-left: auto;
-  }
+ 
+  .count-badge { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); padding: 6px 0; margin-left: auto; }
   .count-badge span { color: var(--text); font-weight: 500; }
-
-  /* ── CATEGORY FILTER PILLS ── */
-  .cat-pills {
-    padding: 16px 48px 0;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+ 
+  /* ── PILLS ── */
+  .cat-pills { padding: 16px 48px 0; display: flex; gap: 8px; flex-wrap: wrap; }
   .pill {
-    padding: 5px 14px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 500;
-    border: 1.5px solid transparent;
-    cursor: pointer;
-    transition: all .18s;
-    background: var(--surface);
-    color: var(--text-muted);
-    border-color: var(--border);
-    white-space: nowrap;
+    padding: 5px 14px; border-radius: 100px; font-size: 12px; font-weight: 500;
+    border: 1.5px solid var(--border); cursor: pointer;
+    transition: all .18s; background: var(--surface); color: var(--text-muted);
+    white-space: nowrap; box-shadow: var(--shadow);
   }
   .pill:hover { color: var(--text); border-color: var(--border-light); }
-  .pill.active {
-    color: #fff;
-    border-color: transparent;
-  }
+  .pill.active { color: #fff; border-color: transparent; }
   .pill[data-cat="all"].active { background: var(--accent); }
   .pill[data-cat="Gestión de partes"].active { background: var(--cat-partes); }
   .pill[data-cat="Valuación contable"].active { background: var(--cat-valuacion); }
   .pill[data-cat="Migración de Inventario"].active { background: var(--cat-migracion); }
-  .pill[data-cat="Posiciones arancelarias e impuestos"].active { background: var(--cat-arancel); color: #111; }
+  .pill[data-cat="Posiciones arancelarias e impuestos"].active { background: var(--cat-arancel); }
   .pill[data-cat="Facturación"].active { background: var(--cat-factura); }
-  .pill[data-cat="Política de precios"].active { background: var(--cat-precios); color: #111; }
+  .pill[data-cat="Política de precios"].active { background: var(--cat-precios); }
   .pill[data-cat="Clientes y cuentas corrientes"].active { background: var(--cat-clientes); }
   .pill[data-cat="Salida 2da etapa"].active { background: var(--cat-salida2); }
   .pill[data-cat="Salida 3ra etapa"].active { background: var(--cat-salida3); }
-
+ 
   /* ── TABLE ── */
-  .table-wrap {
-    padding: 24px 48px 0;
-    overflow-x: auto;
-  }
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: 13.5px;
-  }
+  .table-wrap { padding: 24px 48px 0; overflow-x: auto; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13.5px; }
+ 
   thead th {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    padding: 0 16px 12px;
-    text-align: left;
-    white-space: nowrap;
+    font-family: 'DM Mono', monospace; font-size: 10.5px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); padding: 0 16px 12px;
+    text-align: left; white-space: nowrap;
     border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 10;
-    user-select: none;
-    cursor: pointer;
+    position: sticky; top: 0;
+    background: var(--th-bg);
+    z-index: 10; user-select: none; cursor: pointer;
+    transition: background .3s, color .25s, border-color .3s;
   }
   thead th:hover { color: var(--text-dim); }
   thead th.sort-active { color: var(--accent); }
@@ -273,147 +418,80 @@
   thead th .sort-icon { opacity: .4; transition: opacity .15s, transform .2s; }
   thead th.sort-active .sort-icon { opacity: 1; }
   thead th.sort-desc .sort-icon { transform: rotate(180deg); }
-
-  tbody tr {
-    cursor: pointer;
-    transition: background .12s;
-  }
-  tbody tr:hover td { background: var(--surface); }
-  tbody tr.expanded td { background: var(--surface); }
-
+ 
+  tbody tr { transition: background .12s; }
+  tbody tr.clickable { cursor: pointer; }
+  tbody tr:hover td { background: var(--surface2) !important; }
+  tbody tr.expanded td { background: var(--surface2) !important; }
+ 
   td {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-    transition: background .12s;
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    vertical-align: top; background: var(--surface);
+    transition: background .15s, border-color .3s;
   }
-  td:first-child { padding-left: 16px; }
-
-  /* category dot */
-  .cat-dot {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    margin-right: 8px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
+ 
+  .cat-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; margin-top: 3px; }
   .cat-cell { display: flex; align-items: flex-start; }
   .cat-text { font-weight: 500; color: var(--text-dim); font-size: 13px; }
-
   .title-cell { font-weight: 500; color: var(--text); max-width: 280px; }
-  .title-cell small { display: block; font-size: 11.5px; color: var(--text-muted); margin-top: 3px; font-weight: 400; }
-
-  .resp-cell { color: var(--text-dim); font-size: 12.5px; max-width: 240px; line-height: 1.5; }
+ 
   .resp-tag {
-    display: inline-block;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1px 8px;
-    font-size: 11.5px;
-    margin: 2px 2px 2px 0;
-    color: var(--text-dim);
-    white-space: nowrap;
+    display: inline-block; background: var(--surface2);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 1px 8px; font-size: 11.5px; margin: 2px 2px 2px 0;
+    color: var(--text-dim); white-space: nowrap;
+    transition: background .3s, border-color .3s, color .3s;
   }
-
-  .date-cell {
-    font-family: 'DM Mono', monospace;
-    font-size: 12.5px;
-    white-space: nowrap;
-  }
-  .date-urgent { color: var(--accent2); }
+ 
+  .date-cell { font-family: 'DM Mono', monospace; font-size: 12.5px; white-space: nowrap; }
+  .date-urgent { color: var(--accent2); font-weight: 600; }
   .date-soon   { color: var(--orange); }
   .date-ok     { color: var(--green); }
   .date-future { color: var(--text-muted); }
   .date-none   { color: var(--border-light); font-style: italic; }
-
-  .comment-preview { 
-    font-size: 12px; 
-    color: var(--text-muted); 
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .has-comment { color: var(--accent); }
-
-  /* expanded row */
-  .expand-row td {
-    background: var(--surface2) !important;
-    padding: 0;
-    border-bottom: 1px solid var(--border);
-  }
+ 
+  .has-comment { color: var(--accent); font-size: 12px; }
+ 
+  .expand-row td { background: var(--surface2) !important; padding: 0; border-bottom: 1px solid var(--border); }
   .expand-content {
-    padding: 18px 24px;
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
+    padding: 18px 24px; font-size: 13px; color: var(--text-dim); line-height: 1.7;
     border-left: 3px solid var(--accent);
-    margin: 0 16px 16px;
-    border-radius: 0 6px 6px 0;
-    background: rgba(91,127,255,0.05);
-    white-space: pre-line;
+    margin: 0 16px 16px; border-radius: 0 6px 6px 0;
+    background: var(--accent-glow); white-space: pre-line;
   }
-
-  .no-results {
-    text-align: center;
-    padding: 64px 24px;
-    color: var(--text-muted);
-    font-size: 15px;
-  }
+ 
+  .no-results { text-align: center; padding: 64px 24px; color: var(--text-muted); font-size: 15px; background: var(--surface); }
   .no-results svg { display: block; margin: 0 auto 16px; opacity: .3; }
-
-  /* ── GROUP VIEW ── */
-  .group-header td {
-    background: var(--surface) !important;
-    padding: 10px 16px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--border-light);
-  }
-  .group-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .group-count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    font-size: 11px;
-    font-weight: 600;
-    color: #fff;
-    margin-left: 4px;
-  }
-
-  /* responsive */
+ 
   @media (max-width: 768px) {
-    header { padding: 36px 20px 28px; }
+    header { padding: 40px 20px 28px; }
+    .theme-toggle { top: 16px; right: 20px; }
     .toolbar, .cat-pills, .table-wrap { padding-left: 20px; padding-right: 20px; }
     .header-stats { gap: 20px; }
   }
-
-  /* animations */
+ 
   .fade-row { animation: fadeIn .18s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-
-  .toggle-icon { transition: transform .2s; display: inline-block; }
-  tr.expanded .toggle-icon { transform: rotate(90deg); }
-
-  /* scrollbar */
+  .toggle-icon-row { transition: transform .2s; display: inline-block; }
+  tr.expanded .toggle-icon-row { transform: rotate(90deg); }
+ 
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
 </style>
 </head>
 <body>
-
+ 
 <header>
+  <div class="theme-toggle">
+    <span class="theme-label" id="themeLabel">Modo claro</span>
+    <label class="t-switch" title="Cambiar tema">
+      <input type="checkbox" id="themeCheck">
+      <div class="t-track"></div>
+      <div class="t-thumb"><span class="t-icon" id="themeIcon">☀️</span></div>
+    </label>
+  </div>
+ 
   <div class="header-label">Proyecto · Migración Service → Epicor</div>
   <h1>Plan de <em>Actividades</em></h1>
   <div class="header-sub">Seguimiento de tareas críticas para la salida a producción</div>
@@ -424,12 +502,12 @@
     </div>
     <div class="stat-divider"></div>
     <div class="stat">
-      <span class="stat-value" id="stat-cats">9</span>
+      <span class="stat-value">9</span>
       <span class="stat-label">Categorías</span>
     </div>
     <div class="stat-divider"></div>
     <div class="stat">
-      <span class="stat-value" id="stat-people">13</span>
+      <span class="stat-value">13</span>
       <span class="stat-label">Responsables</span>
     </div>
     <div class="stat-divider"></div>
@@ -439,15 +517,13 @@
     </div>
   </div>
 </header>
-
+ 
 <div class="toolbar">
   <div class="search-wrap">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
     <input type="search" id="searchInput" placeholder="Buscar tarea, responsable…">
   </div>
-  <select id="respFilter">
-    <option value="">Todos los responsables</option>
-  </select>
+  <select id="respFilter"><option value="">Todos los responsables</option></select>
   <button class="sort-btn" id="sortDate" data-sort="date">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     Fecha
@@ -460,13 +536,13 @@
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     Subtítulo
   </button>
-  <span class="count-badge" id="countBadge">Mostrando <span id="visibleCount">27</span> de <span id="totalCount">27</span></span>
+  <span class="count-badge">Mostrando <span id="visibleCount">27</span> de <span id="totalCount">27</span></span>
 </div>
-
+ 
 <div class="cat-pills" id="catPills"></div>
-
+ 
 <div class="table-wrap">
-  <table id="taskTable">
+  <table>
     <thead>
       <tr>
         <th style="width:30px"></th>
@@ -474,7 +550,7 @@
         <th data-col="title"><div class="th-inner">Tarea <svg class="sort-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg></div></th>
         <th data-col="resp"><div class="th-inner">Responsables <svg class="sort-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg></div></th>
         <th data-col="date"><div class="th-inner">Fecha <svg class="sort-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg></div></th>
-        <th data-col="comment"><div class="th-inner">Comentario</div></th>
+        <th><div class="th-inner">Comentario</div></th>
       </tr>
     </thead>
     <tbody id="taskBody"></tbody>
@@ -484,8 +560,29 @@
     Sin resultados para la búsqueda actual.
   </div>
 </div>
-
+ 
 <script>
+// ── Theme ──
+const html = document.documentElement;
+const themeCheck = document.getElementById('themeCheck');
+const themeLabel = document.getElementById('themeLabel');
+const themeIcon  = document.getElementById('themeIcon');
+ 
+const applyTheme = t => {
+  html.setAttribute('data-theme', t);
+  themeCheck.checked = t === 'dark';
+  themeLabel.textContent = t === 'dark' ? 'Modo oscuro' : 'Modo claro';
+  themeIcon.textContent  = t === 'dark' ? '🌙' : '☀️';
+  try { localStorage.setItem('theme', t); } catch(e) {}
+};
+ 
+let savedTheme = 'light';
+try { savedTheme = localStorage.getItem('theme') || 'light'; } catch(e) {}
+applyTheme(savedTheme);
+ 
+themeCheck.addEventListener('change', () => applyTheme(themeCheck.checked ? 'dark' : 'light'));
+ 
+// ── Data ──
 const TASKS = [
   { cat: "Gestión de partes", title: "Cierre de inventario físico de Service", resp: "Ángel Graneros / Erick Pineda", date: "05-jun", comment: "" },
   { cat: "Gestión de partes", title: "Matching de códigos Ciber vs. Epicor para detectar partes a crear", resp: "Maximiliano Sanchez Almeida / Debora Acuña", date: "20-may", comment: "" },
@@ -515,7 +612,7 @@ const TASKS = [
   { cat: "Salida 2da etapa", title: "B2B + RMA", resp: "", date: "01-ago", comment: "" },
   { cat: "Salida 3ra etapa", title: "Defensa consumidor + Bot", resp: "", date: "01-sep", comment: "" },
 ];
-
+ 
 const CAT_COLORS = {
   "Gestión de partes": "var(--cat-partes)",
   "Valuación contable": "var(--cat-valuacion)",
@@ -527,56 +624,46 @@ const CAT_COLORS = {
   "Salida 2da etapa": "var(--cat-salida2)",
   "Salida 3ra etapa": "var(--cat-salida3)",
 };
-
+ 
 function parseDate(str) {
   if (!str) return null;
-  const months = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11 };
-  const mES = { ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11 };
+  const mES = {ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11};
   const m = str.match(/^(\d{2})-([a-zA-Záéíóú]{3})$/);
   if (!m) return null;
-  const d = parseInt(m[1]);
-  const mon = m[2].toLowerCase();
-  const mo = mES[mon] ?? months[mon];
-  if (mo === undefined) return null;
-  return new Date(2025, mo, d);
+  const mo = mES[m[2].toLowerCase()];
+  return mo !== undefined ? new Date(2025, mo, parseInt(m[1])) : null;
 }
-
+ 
 function dateClass(str) {
-  if (!str) return 'date-none';
   const d = parseDate(str);
   if (!d) return 'date-none';
   const now = new Date(); now.setHours(0,0,0,0);
   const diff = (d - now) / 86400000;
-  if (diff < 0) return 'date-urgent';
-  if (diff <= 7) return 'date-urgent';
+  if (diff < 0 || diff <= 7) return 'date-urgent';
   if (diff <= 21) return 'date-soon';
   if (diff <= 60) return 'date-ok';
   return 'date-future';
 }
-
-// State
-let sortCol = 'date', sortDir = 1, activeCat = 'all', searchQ = '', respQ = '';
-let expandedRow = null;
-
-// Build persons list
+ 
+let sortCol = 'date', sortDir = 1, activeCat = 'all', searchQ = '', respQ = '', expandedRow = null;
+ 
+// Responsables
 const allPersons = new Set();
 TASKS.forEach(t => t.resp.split('/').forEach(p => { const n = p.trim(); if (n) allPersons.add(n); }));
-const respFilter = document.getElementById('respFilter');
+const respFilterEl = document.getElementById('respFilter');
 [...allPersons].sort().forEach(p => {
-  const o = document.createElement('option');
-  o.value = p; o.textContent = p;
-  respFilter.appendChild(o);
+  const o = document.createElement('option'); o.value = p; o.textContent = p;
+  respFilterEl.appendChild(o);
 });
-
-// Category pills
+ 
+// Pills
 const cats = [...new Set(TASKS.map(t => t.cat))];
 const pillsEl = document.getElementById('catPills');
 const allPill = document.createElement('button');
 allPill.className = 'pill active'; allPill.dataset.cat = 'all'; allPill.textContent = 'Todas';
 pillsEl.appendChild(allPill);
 cats.forEach(c => {
-  const b = document.createElement('button');
-  b.className = 'pill'; b.dataset.cat = c; b.textContent = c;
+  const b = document.createElement('button'); b.className = 'pill'; b.dataset.cat = c; b.textContent = c;
   pillsEl.appendChild(b);
 });
 pillsEl.addEventListener('click', e => {
@@ -584,134 +671,98 @@ pillsEl.addEventListener('click', e => {
   activeCat = e.target.dataset.cat;
   document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   e.target.classList.add('active');
-  expandedRow = null;
-  render();
+  expandedRow = null; render();
 });
-
-// Sort buttons (toolbar)
+ 
+// Sort
 document.getElementById('sortDate').addEventListener('click', () => toggleSort('date'));
-document.getElementById('sortCat').addEventListener('click', () => toggleSort('cat'));
-document.getElementById('sortTitle').addEventListener('click', () => toggleSort('title'));
-
-// Table header sort
-document.querySelectorAll('thead th[data-col]').forEach(th => {
-  th.addEventListener('click', () => toggleSort(th.dataset.col));
-});
-
+document.getElementById('sortCat').addEventListener('click',  () => toggleSort('cat'));
+document.getElementById('sortTitle').addEventListener('click',() => toggleSort('title'));
+document.querySelectorAll('thead th[data-col]').forEach(th => th.addEventListener('click', () => toggleSort(th.dataset.col)));
+ 
 function toggleSort(col) {
-  if (sortCol === col) sortDir *= -1;
-  else { sortCol = col; sortDir = 1; }
-  expandedRow = null;
-  render();
+  if (sortCol === col) sortDir *= -1; else { sortCol = col; sortDir = 1; }
+  expandedRow = null; render();
 }
-
-document.getElementById('searchInput').addEventListener('input', e => {
-  searchQ = e.target.value.toLowerCase();
-  expandedRow = null;
-  render();
-});
-document.getElementById('respFilter').addEventListener('change', e => {
-  respQ = e.target.value;
-  expandedRow = null;
-  render();
-});
-
+ 
+document.getElementById('searchInput').addEventListener('input', e => { searchQ = e.target.value.toLowerCase(); expandedRow = null; render(); });
+respFilterEl.addEventListener('change', e => { respQ = e.target.value; expandedRow = null; render(); });
+ 
 function getFiltered() {
   return TASKS.filter(t => {
     if (activeCat !== 'all' && t.cat !== activeCat) return false;
     if (respQ && !t.resp.toLowerCase().includes(respQ.toLowerCase())) return false;
-    if (searchQ) {
-      const hay = (t.cat + t.title + t.resp + t.comment).toLowerCase();
-      if (!hay.includes(searchQ)) return false;
-    }
+    if (searchQ && !(t.cat+t.title+t.resp+t.comment).toLowerCase().includes(searchQ)) return false;
     return true;
   });
 }
-
+ 
 function getSorted(arr) {
   return [...arr].sort((a, b) => {
     let va, vb;
     if (sortCol === 'date') {
       const da = parseDate(a.date), db = parseDate(b.date);
-      va = da ? da.getTime() : Infinity;
-      vb = db ? db.getTime() : Infinity;
-    } else if (sortCol === 'cat') {
-      va = a.cat; vb = b.cat;
-    } else if (sortCol === 'title') {
-      va = a.title; vb = b.title;
-    } else if (sortCol === 'resp') {
-      va = a.resp; vb = b.resp;
+      va = da ? da.getTime() : Infinity; vb = db ? db.getTime() : Infinity;
     } else if (sortCol === 'comment') {
       va = a.comment ? 1 : 0; vb = b.comment ? 1 : 0;
     } else {
-      va = a[sortCol] || ''; vb = b[sortCol] || '';
+      va = (a[sortCol]||'').toLowerCase(); vb = (b[sortCol]||'').toLowerCase();
     }
     if (va < vb) return -1 * sortDir;
-    if (va > vb) return 1 * sortDir;
+    if (va > vb) return  1 * sortDir;
     return 0;
   });
 }
-
-function renderResponsibles(resp) {
-  if (!resp) return '<span style="color:var(--border-light);font-size:12px;">—</span>';
+ 
+function renderResp(resp) {
+  if (!resp) return '<span style="color:var(--border-light);font-size:12px">—</span>';
   return resp.split('/').map(p => `<span class="resp-tag">${p.trim()}</span>`).join('');
 }
-
+ 
 function render() {
   const filtered = getFiltered();
   const sorted = getSorted(filtered);
-
-  // Update sort buttons
+ 
   document.querySelectorAll('.sort-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.sort === sortCol);
     b.classList.toggle('desc', b.dataset.sort === sortCol && sortDir === -1);
   });
-  // Update th sort icons
   document.querySelectorAll('thead th[data-col]').forEach(th => {
     th.classList.toggle('sort-active', th.dataset.col === sortCol);
     th.classList.toggle('sort-desc', th.dataset.col === sortCol && sortDir === -1);
   });
-
+ 
   const body = document.getElementById('taskBody');
   body.innerHTML = '';
-
   document.getElementById('noResults').style.display = sorted.length ? 'none' : 'block';
   document.getElementById('visibleCount').textContent = sorted.length;
   document.getElementById('totalCount').textContent = TASKS.length;
-
-  // Nearest upcoming date for header stat
-  const upcoming = sorted.map(t => parseDate(t.date)).filter(Boolean).filter(d => d >= new Date()).sort((a,b) => a-b);
+ 
+  const upcoming = sorted.map(t => parseDate(t.date)).filter(Boolean).filter(d => d >= new Date()).sort((a,b)=>a-b);
   if (upcoming.length) {
     const u = upcoming[0];
     document.getElementById('stat-upcoming').textContent = `${String(u.getDate()).padStart(2,'0')}/${String(u.getMonth()+1).padStart(2,'0')}`;
   }
-
+ 
   sorted.forEach((task, idx) => {
     const color = CAT_COLORS[task.cat] || 'var(--accent)';
     const dc = dateClass(task.date);
-    const dateVal = task.date || '—';
-
     const tr = document.createElement('tr');
     tr.className = 'fade-row';
-    tr.dataset.idx = idx;
+    if (task.comment) tr.classList.add('clickable');
     if (expandedRow === idx) tr.classList.add('expanded');
-
+ 
     tr.innerHTML = `
       <td style="text-align:center;color:var(--text-muted);width:36px">
-        ${task.comment ? `<span class="toggle-icon" style="font-size:13px">▶</span>` : ''}
+        ${task.comment ? '<span class="toggle-icon-row" style="font-size:11px">▶</span>' : ''}
       </td>
-      <td>
-        <div class="cat-cell">
-          <span class="cat-dot" style="background:${color}"></span>
-          <span class="cat-text">${task.cat}</span>
-        </div>
-      </td>
+      <td><div class="cat-cell"><span class="cat-dot" style="background:${color}"></span><span class="cat-text">${task.cat}</span></div></td>
       <td class="title-cell">${task.title}</td>
-      <td class="resp-cell">${renderResponsibles(task.resp)}</td>
-      <td class="date-cell ${dc}">${dateVal}</td>
-      <td>${task.comment ? `<span class="comment-preview has-comment">💬 Ver nota</span>` : '<span style="color:var(--border-light);font-size:12px">—</span>'}</td>
+      <td>${renderResp(task.resp)}</td>
+      <td class="date-cell ${dc}">${task.date || '—'}</td>
+      <td>${task.comment ? '<span class="has-comment">💬 Ver nota</span>' : '<span style="color:var(--border-light);font-size:12px">—</span>'}</td>
     `;
-
+ 
     if (task.comment) {
       tr.addEventListener('click', () => {
         const existing = body.querySelector('.expand-row');
@@ -728,12 +779,12 @@ function render() {
         }
       });
     }
-
     body.appendChild(tr);
   });
 }
-
+ 
 render();
 </script>
 </body>
 </html>
+ 
