@@ -549,11 +549,11 @@
         <thead>
           <tr class="tl-month-row">
             <th class="tl-label-col"></th>
-            <th class="month-may" colspan="1">Mayo 2025</th>
-            <th class="month-jun" colspan="1">Junio 2025</th>
-            <th class="month-jul" colspan="1">Julio 2025</th>
-            <th class="month-ago" colspan="1">Agosto 2025</th>
-            <th class="month-sep" colspan="1">Septiembre 2025</th>
+            <th class="month-may" colspan="1">Mayo 2026</th>
+            <th class="month-jun" colspan="1">Junio 2026</th>
+            <th class="month-jul" colspan="1">Julio 2026</th>
+            <th class="month-ago" colspan="1">Agosto 2026</th>
+            <th class="month-sep" colspan="1">Septiembre 2026</th>
           </tr>
         </thead>
         <tbody id="tlBody"></tbody>
@@ -680,7 +680,7 @@ function parseDate(str) {
   const m = str.match(/^(\d{2})-([a-zA-Záéíóú]{3})$/);
   if (!m) return null;
   const mo = mES[m[2].toLowerCase()];
-  return mo !== undefined ? new Date(2025, mo, parseInt(m[1])) : null;
+  return mo !== undefined ? new Date(2026, mo, parseInt(m[1])) : null;
 }
 
 function dateClass(str) {
