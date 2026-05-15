@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión de Proyecto — Migración Epicor</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
   /* ── LIGHT THEME (default) ── */
   :root, [data-theme="light"] {
@@ -220,6 +221,19 @@
   .count-badge { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); padding: 6px 0; margin-left: auto; }
   .count-badge span { color: var(--text); font-weight: 500; }
 
+  .dl-btn {
+    display: flex; align-items: center; gap: 7px;
+    padding: 10px 18px;
+    background: var(--accent); border: none;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    border-radius: 8px; cursor: pointer;
+    transition: opacity .2s, transform .15s;
+    white-space: nowrap;
+  }
+  .dl-btn:hover { opacity: .85; transform: translateY(-1px); }
+  .dl-btn:active { transform: translateY(0); }
+
   /* ── PILLS ── */
   .cat-pills { padding: 16px 48px 0; display: flex; gap: 8px; flex-wrap: wrap; }
   .pill {
@@ -381,6 +395,10 @@
     Subtítulo
   </button>
   <span class="count-badge">Mostrando <span id="visibleCount">27</span> de <span id="totalCount">27</span></span>
+  <button class="dl-btn" id="dlBtn" title="Descargar lista en Excel">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Exportar Excel
+  </button>
 </div>
 
 <div class="cat-pills" id="catPills"></div>
@@ -491,11 +509,11 @@ function dateClass(str) {
 
 let sortCol = 'date', sortDir = 1, activeCat = 'all', searchQ = '', respQ = '', expandedRow = null;
 
-// Responsables
+// Responsables — ordenados alfabéticamente
 const allPersons = new Set();
 TASKS.forEach(t => t.resp.split('/').forEach(p => { const n = p.trim(); if (n) allPersons.add(n); }));
 const respFilterEl = document.getElementById('respFilter');
-[...allPersons].sort().forEach(p => {
+[...allPersons].sort((a, b) => a.localeCompare(b, 'es')).forEach(p => {
   const o = document.createElement('option'); o.value = p; o.textContent = p;
   respFilterEl.appendChild(o);
 });
@@ -626,6 +644,80 @@ function render() {
     body.appendChild(tr);
   });
 }
+
+// ── Excel export ──
+document.getElementById('dlBtn').addEventListener('click', () => {
+  const filtered = getSorted(getFiltered());
+
+  const CAT_HEX = {
+    "Gestión de partes":                    "5B47E0",
+    "Valuación contable":                   "C4326E",
+    "Migración de Inventario":              "1A9E62",
+    "Posiciones arancelarias e impuestos":  "A07800",
+    "Facturación":                          "C85A0A",
+    "Política de precios":                  "0880A0",
+    "Clientes y cuentas corrientes":        "6D28D9",
+    "Salida 2da etapa":                     "B04A08",
+    "Salida 3ra etapa":                     "B02020",
+  };
+
+  const wb = XLSX.utils.book_new();
+
+  // ── Hoja 1: Tareas ──
+  const wsData = [["Categoría", "Tarea", "Responsables", "Fecha necesidad", "Comentario"]];
+  filtered.forEach(t => wsData.push([t.cat, t.title, t.resp, t.date || "", t.comment || ""]));
+  const ws = XLSX.utils.aoa_to_sheet(wsData);
+  ws['!cols'] = [{ wch: 36 }, { wch: 58 }, { wch: 52 }, { wch: 14 }, { wch: 52 }];
+
+  const hdrStyle = {
+    font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11, name: "Arial" },
+    fill: { fgColor: { rgb: "1A1D2E" } },
+    alignment: { horizontal: "center", vertical: "center", wrapText: true },
+  };
+  ['A1','B1','C1','D1','E1'].forEach(c => { if (ws[c]) ws[c].s = hdrStyle; });
+
+  filtered.forEach((task, i) => {
+    const row = i + 2;
+    const catColor = CAT_HEX[task.cat] || "3D63FF";
+    const rowBg = i % 2 === 0 ? "FFFFFF" : "F5F6FA";
+    const base = { font: { sz: 10, name: "Arial" }, fill: { fgColor: { rgb: rowBg } }, alignment: { vertical: "top", wrapText: true }, border: { bottom: { style: "thin", color: { rgb: "E0E3F0" } } } };
+    const catS = { ...base, font: { sz: 10, name: "Arial", bold: true, color: { rgb: catColor } } };
+    ['A','B','C','D','E'].forEach((c, ci) => {
+      const ref = `${c}${row}`;
+      if (ws[ref]) ws[ref].s = ci === 0 ? catS : base;
+    });
+  });
+
+  if (!ws['!rows']) ws['!rows'] = [];
+  ws['!rows'][0] = { hpt: 22 };
+  filtered.forEach((_, i) => { ws['!rows'][i + 1] = { hpt: 38 }; });
+  ws['!freeze'] = { xSplit: 0, ySplit: 1, topLeftCell: "A2", activeCell: "A2", sqref: "A2" };
+  XLSX.utils.book_append_sheet(wb, ws, "Tareas");
+
+  // ── Hoja 2: Responsables ──
+  const allR = new Set();
+  TASKS.forEach(t => t.resp.split('/').forEach(p => { const n = p.trim(); if (n) allR.add(n); }));
+  const respRows = [["Responsable", "Cant. tareas asignadas"]];
+  [...allR].sort((a, b) => a.localeCompare(b, 'es')).forEach(p => {
+    const count = TASKS.filter(t => t.resp.split('/').map(x => x.trim()).includes(p)).length;
+    respRows.push([p, count]);
+  });
+  const wsR = XLSX.utils.aoa_to_sheet(respRows);
+  wsR['!cols'] = [{ wch: 38 }, { wch: 24 }];
+  ['A1','B1'].forEach(c => { if (wsR[c]) wsR[c].s = hdrStyle; });
+  [...allR].forEach((_, i) => {
+    const row = i + 2;
+    const bg = i % 2 === 0 ? "FFFFFF" : "F5F6FA";
+    const s = { font: { sz: 10, name: "Arial" }, fill: { fgColor: { rgb: bg } }, alignment: { vertical: "center" } };
+    const sNum = { ...s, alignment: { horizontal: "center", vertical: "center" } };
+    if (wsR[`A${row}`]) wsR[`A${row}`].s = s;
+    if (wsR[`B${row}`]) wsR[`B${row}`].s = sNum;
+  });
+  XLSX.utils.book_append_sheet(wb, wsR, "Responsables");
+
+  const fecha = new Date().toISOString().slice(0, 10);
+  XLSX.writeFile(wb, `Plan_Migracion_Epicor_${fecha}.xlsx`);
+});
 
 render();
 </script>
