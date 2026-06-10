@@ -406,7 +406,7 @@
     width: 160px; min-width: 160px;
     text-align: left; padding-left: 20px;
     border-right: 1px solid var(--border);
-    color: transparent; /* empty corner */
+    color: transparent;
     background: var(--surface);
   }
   .tl-month-row th.month-may  { color: #5b47e0; background: rgba(91,71,224,.07); }
@@ -452,12 +452,10 @@
     vertical-align: top;
     min-width: 130px;
   }
-  /* vertical dividers between months */
   .tl-month-col:not(:last-child) {
     border-right: 1px dashed var(--border);
   }
 
-  /* task dot + label */
   .tl-tasks { display: flex; flex-direction: column; gap: 8px; }
   .tl-task {
     display: flex; align-items: flex-start; gap: 6px;
@@ -474,7 +472,6 @@
     display: block; margin-bottom: 2px;
   }
 
-  /* legend */
   .tl-legend {
     display: flex; flex-wrap: wrap; gap: 12px 20px;
     padding: 14px 20px;
@@ -492,6 +489,70 @@
   @media (max-width: 768px) {
     .tl-toggle-wrap { padding-left: 20px; padding-right: 20px; }
     .tl-inner { margin-left: 20px; margin-right: 20px; }
+  }
+
+  /* ── ESTADO SELECT ── */
+  .estado-select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 26px 3px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    width: 130px;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%236b7096' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .estado-select:focus { box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  /* Paleta de estados — light */
+  .estado-select[data-v="Pendiente"] {
+    background-color: #f5f6fa;
+    border-color: #c8ccdf;
+    color: #4a5070;
+  }
+  .estado-select[data-v="En curso"] {
+    background-color: #e8f0ff;
+    border-color: #3d63ff;
+    color: #1a3ab8;
+  }
+  .estado-select[data-v="Demorado"] {
+    background-color: #fff0ed;
+    border-color: #d63030;
+    color: #a01818;
+  }
+  .estado-select[data-v="Finalizado"] {
+    background-color: #eafaf2;
+    border-color: #1a9e62;
+    color: #0f6040;
+  }
+
+  /* dark overrides */
+  [data-theme="dark"] .estado-select[data-v="Pendiente"] {
+    background-color: #1a1d28;
+    border-color: #2e3245;
+    color: #9098be;
+  }
+  [data-theme="dark"] .estado-select[data-v="En curso"] {
+    background-color: rgba(91,127,255,0.15);
+    border-color: #5b7fff;
+    color: #a8bcff;
+  }
+  [data-theme="dark"] .estado-select[data-v="Demorado"] {
+    background-color: rgba(255,107,107,0.12);
+    border-color: #ff6b6b;
+    color: #ffaaaa;
+  }
+  [data-theme="dark"] .estado-select[data-v="Finalizado"] {
+    background-color: rgba(78,203,141,0.12);
+    border-color: #4ecb8d;
+    color: #4ecb8d;
   }
 </style>
 </head>
@@ -569,6 +630,13 @@
     <input type="search" id="searchInput" placeholder="Buscar tarea, responsable…">
   </div>
   <select id="respFilter"><option value="">Todos los responsables</option></select>
+  <select id="estadoFilter">
+    <option value="">Todos los estados</option>
+    <option value="Pendiente">Pendiente</option>
+    <option value="En curso">En curso</option>
+    <option value="Demorado">Demorado</option>
+    <option value="Finalizado">Finalizado</option>
+  </select>
   <button class="sort-btn" id="sortDate" data-sort="date">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     Fecha
@@ -599,6 +667,7 @@
         <th data-col="title"><div class="th-inner">Tarea <svg class="sort-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg></div></th>
         <th data-col="resp"><div class="th-inner">Responsables <svg class="sort-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg></div></th>
         <th data-col="date"><div class="th-inner">Fecha <svg class="sort-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg></div></th>
+        <th data-col="estado"><div class="th-inner">Estado <svg class="sort-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg></div></th>
         <th><div class="th-inner">Comentario</div></th>
       </tr>
     </thead>
@@ -631,15 +700,25 @@ applyTheme(savedTheme);
 
 themeCheck.addEventListener('change', () => applyTheme(themeCheck.checked ? 'dark' : 'light'));
 
+// ── Estado persistence ──
+const ESTADO_KEY = 'epicor_estados_v1';
+function loadEstados() {
+  try { return JSON.parse(localStorage.getItem(ESTADO_KEY)) || {}; } catch(e) { return {}; }
+}
+function saveEstados(obj) {
+  try { localStorage.setItem(ESTADO_KEY, JSON.stringify(obj)); } catch(e) {}
+}
+const estadoMap = loadEstados(); // { taskIndex: "En curso" | "Pendiente" | "Demorado" }
+
 // ── Data ──
 const TASKS = [
   { cat: "Gestión de partes", title: "Cierre de inventario físico de Service", resp: "Ángel Graneros / Erick Pineda", date: "08-jun", comment: "" },
   { cat: "Gestión de partes", title: "Matching de códigos Ciber vs. Epicor para detectar partes a crear", resp: "Maximiliano Sanchez Almeida / Debora Acuña", date: "20-may", comment: "" },
-  { cat: "Gestión de partes", title: "Definir stock que migra, scrap y obsoletos post inventario", resp: "Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda", date: "11-jun", comment: "" },
+  { cat: "Gestión de partes", title: "Definir stock que migra, scrap y obsoletos post inventario", resp: "Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda", date: "11-jun", comment: "Con esta definición, Sistemas realizará un nuevo cruce con Epicor para enviar qué información tenemos de estas partes y completar lo pendiente." },
   { cat: "Gestión de partes", title: "Registrar previamente en Ciber todos los ajustes de stock", resp: "Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda", date: "12-jun", comment: "" },
   { cat: "Gestión de partes", title: "Validar posible restricción aduanera para placas desde Río Grande", resp: "Julieta Franco / Fábrica", date: "27-may", comment: "" },
-  { cat: "Gestión de partes", title: "Procedimiento escrito de compra y gestión de partes de Service (vital parts, FOC, CBUs)", resp: "Julieta Franco / Planificación", date: "27-may", comment: "" },
-  { cat: "Valuación contable", title: "Definir si el inventario migra con los costos actuales de Ciber o recálculo de todos los costos", resp: "Claudio Fernandez / Gabriela Duarte / Erick Pineda", date: "29-may", comment: "" },
+  { cat: "Gestión de partes", title: "Procedimiento escrito de compra y gestión de partes de Service (vital parts, FOC, CBUs)", resp: "Julieta Franco / Planificación", date: "15-jun", comment: "" },
+  { cat: "Valuación contable", title: "Definir si el inventario migra con los costos actuales de Ciber o recálculo de todos los costos", resp: "Claudio Fernandez / Gabriela Duarte / Erick Pineda", date: "29-may", comment: "Para piloto se definen para pruebas:\n• P 158 a la lista de precios de repuestos.\n• P 164 lista de costos\n• Precio Ciber sin impuestos — muestra de 50 productos.\n• Precio de Ciber multiplicado por el tipo de cambio.\n• Lista de costos con lo actual de Ciber." },
   { cat: "Valuación contable", title: "Validación y documentación con Auditoría (E&Y)", resp: "Claudio Fernandez / Gabriela Duarte / Erick Pineda", date: "05-jun", comment: "" },
   { cat: "Migración de Inventario", title: "DMT migración Epicor Piloto", resp: "Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas / Erick Pineda", date: "15-jun", comment: "" },
   { cat: "Migración de Inventario", title: "DMT migración Epicor Productivo", resp: "Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas / Erick Pineda", date: "01-jul", comment: "" },
@@ -648,15 +727,15 @@ const TASKS = [
   { cat: "Posiciones arancelarias e impuestos", title: "Definir integración Epicor ↔ Tarifa (post salida SF)", resp: "Julieta Franco / Comex", date: "01-sep", comment: "" },
   { cat: "Posiciones arancelarias e impuestos", title: "Definir circuito de actualización y comunicación de cambios arancelarios", resp: "Julieta Franco / Elizabeth Oberkersch", date: "19-jun", comment: "" },
   { cat: "Posiciones arancelarias e impuestos", title: "Verificar situación impositiva de repuestos disponibles para la venta", resp: "Elizabeth Oberkersch", date: "19-jun", comment: "" },
-  { cat: "Facturación", title: "Definir modelo de facturación Epicor y revisión de facturas actuales", resp: "Elizabeth Oberkersch", date: "29-may", comment: "La facturación pasará al modelo Epicor (Radio Victoria).\nRevisión de muestra de facturas actuales.\nPendiente definir si repuesto, mano de obra y gasto de envío se facturan separados o integrados.\n\nEsta definición permite avanzar con el desarrollo de la facturación para:\n• B2C — Consumidor final\n• B2B — Venta de partes a agentes"  },
+  { cat: "Facturación", title: "Definir modelo de facturación Epicor y revisión de facturas actuales", resp: "Elizabeth Oberkersch", date: "05-jun", comment: "La facturación pasará al modelo Epicor (Radio Victoria).\nRevisión de muestra de facturas actuales.\nPendiente definir si repuesto, mano de obra y gasto de envío se facturan separados o integrados.\n\nEsta definición permite avanzar con el desarrollo de la facturación para:\n• B2C — Consumidor final\n• B2B — Venta de partes a agentes"  },
   { cat: "Política de precios", title: "Definir política de precios, listas B2B/B2C y criterios de cálculo", resp: "Julieta Franco / Claudio Fernandez / Gabriela Duarte / Maximiliano Sanchez Almeida", date: "10-jun", comment: "" },
   { cat: "Política de precios", title: "Carga de nuevas listas de precio en Epicor (Piloto)", resp: "Claudio Fernandez / Gabriela Duarte", date: "15-jun", comment: "" },
   { cat: "Política de precios", title: "Carga de nuevas listas de precio en Epicor (Producción)", resp: "Claudio Fernandez / Gabriela Duarte", date: "19-jun", comment: "" },
-  { cat: "Clientes y cuentas corrientes", title: "Envío de listado de clientes activos", resp: "Maximiliano Sanchez Almeida", date: "08-jun", comment: "Se migrarán clientes con movimientos en los últimos 18 meses y comprobantes abiertos.\nLa cuenta corriente histórica permanecerá en Ciber.\n\nAlta de clientes en Epicor – Proceso acordado:\n1. Postventa deberá enviar los mails de todos los agentes en curso.\n   Responsable: Maximiliano Sanchez Almeida\n\n2. Impuestos deberá enviar el formato del mail junto con los datos necesarios para el armado del legajo.\n   Responsable: Elizabeth Oberkersch\n\n3. Sistemas enviará el mail masivo y recopilará los datos para remitirlos a Créditos.\n   Responsable: Debora Acuña\n\n→ Plazo tentativo: envío del mail esta semana (28/05).\n\n⚠ Plazo de respuesta de los agentes: 1 semana. // 8-Junio se enviara a Créditos la información completa de los clientes.- Los clientes que no tengan información actualizada se darán de alta en Epicor como \"inhabilitados\"." },
+  { cat: "Clientes y cuentas corrientes", title: "Envío de listado de clientes activos", resp: "Maximiliano Sanchez Almeida", date: "08-jun", comment: "Se migrarán clientes con movimientos en los últimos 18 meses y comprobantes abiertos. La cuenta corriente histórica permanecerá en Ciber.\n\nAlta de clientes en Epicor – Proceso acordado:\n\n1. Postventa deberá enviar los mails de todos los agentes en curso.\n   Responsable: Maximiliano Sanchez Almeida — ✅ FINALIZADO\n\n2. Impuestos deberá enviar el formato del mail junto con los datos necesarios para el armado del legajo.\n   Responsable: Elizabeth Oberkersch — ✅ FINALIZADO\n\n3. Sistemas enviará el mail masivo y recopilará los datos para remitirlos a Créditos.\n   Responsable: Debora Acuña — 🔵 EN CURSO\n\n→ Plazo tentativo: envío del mail esta semana (12/06).\n\n⚠ Plazo de respuesta de los agentes: 1 semana. // 19-Junio se enviará a Créditos la información completa de los clientes. Los clientes que no tengan información actualizada se darán de alta en Epicor como \"inhabilitados\"." },
   { cat: "Clientes y cuentas corrientes", title: "Validación impositiva", resp: "Elizabeth Oberkersch / Patricio Cetrángolo", date: "15-jun", comment: "Una vez finalizada la revisión de clientes por parte de Auditoría, se definirán los clientes a migrar y se procederá a solicitar los legajos impositivos correspondientes." },
-  { cat: "Clientes y cuentas corrientes", title: "Alta masiva de clientes en Epicor (Piloto)", resp: "Patricio Cetrángolo", date: "01-jun", comment: "Pendiente de DMT clientes.\n\nRevisando el DMT surgieron validaciones — para dar de alta un cliente en Epicor se requiere además de los datos del cliente:\n• Grupo\n• Términos de cobro\n• Unidad de negocio\n• Vendedor\n\nSugerencia: al tratarse de venta de partes sin vendedor asignado (B2B), usar una unidad de negocio y vendedor genérico de referencia para venta a agentes.\n• Grupo: Agentes\n• Términos de cobro: ¿Pago contado? (aplica para ventas con pago directo sobre tienda ecommerce)\n\n\nAmbiente piloto:\n• Se tomarán como modelo de pruebas los clientes de Service existentes en Epicor (Activos).\n\nCUITs de muestra:\n• 20127825131 — último padrón cargado marzo 2026\n• 20129118890 — último padrón cargado marzo 2026\n• 20131291923 (Misiones) — último registro de exenciones 2022, vencimiento 2029\n• 20164949266 (Santa Fe) — último padrón cargado abril 2026\n• 20174706175 (La Pampa) — último padrón cargado marzo 2026\n\n• Resta validar que la información impositiva de esta muestra en Epicor sea correcta. @Patricio Cetrángolo\n• Pendiente: enviar el DMT actualizado para el alta de clientes en Piloto y Producción. @María del Carmen Fernandez"  },
+  { cat: "Clientes y cuentas corrientes", title: "Alta masiva de clientes en Epicor (Piloto)", resp: "Patricio Cetrángolo", date: "01-jun", comment: "Definiciones para el alta — conceptos generales para postventa: \"Agentes Postventa\"\n• Unidad de negocio, vendedor y territorio\n• Grupo: Agentes\n• Términos de cobro: Pago contado\n• Transporte: debido a que el transporte se asigna según la zona de cobertura en el ecommerce, no se crea este dato como genérico — se toma el dato del sitio.\n\nAmbiente piloto:\nEjecución del padrón para CUITs de muestra:\n• 20127825131\n• 20129118890\n• 20131291923 (Misiones)\n• 20164949266 (Santa Fe)\n• 20174706175 (La Pampa)\n\nLuego de esta ejecución del padrón surgieron errores que estamos analizando: errores en la alícuota, errores en la información del convenio informado."  },
   { cat: "Clientes y cuentas corrientes", title: "Alta masiva de clientes en Epicor (Productivo)", resp: "Patricio Cetrángolo", date: "29-jun", comment: "" },
-  { cat: "Clientes y cuentas corrientes", title: "Migración de saldo de clientes a Epicor (Piloto)", resp: "Patricio Cetrángolo / Maximiliano Sanchez Almeida", date: "01-jun", comment: "A definir si utilizamos los clientes de pruebas o esperamos a tener el legajo completo de los agentes, en dónde el resultado debería estar listo el 8-junio" },
+  { cat: "Clientes y cuentas corrientes", title: "Migración de saldo de clientes a Epicor (Piloto)", resp: "Patricio Cetrángolo / Maximiliano Sanchez Almeida", date: "01-jun", comment: "Luego de corregir el padrón para los casos de ejemplo, podemos subir los saldos:\n\n• 20127825131 — TURCUMAN CARLOS ALBERTO (L. Marrón)\n  15/4/2024 | Cobranza a Cliente | X0000-00022415 | -$35.268,92\n\n• 20164949266 — CASARINI PEDRO DAVID\n  22/9/2025 | Cobranza a Cliente | X0000-00024872 | -$15.775,25\n  Saldo Cliente: -$15.775,25\n\n• 20174706175 — HAPPEL MIGUEL ANGEL (Suc. Santa Rosa 1)\n  6/8/2024 | Cobranza a Cliente | X0000-00023028 | -$36.677,20" },
   { cat: "Clientes y cuentas corrientes", title: "Migración de saldo de clientes a Epicor (Productivo)", resp: "Patricio Cetrángolo / Maximiliano Sanchez Almeida", date: "01-jul", comment: "" },
   { cat: "Salida 2da etapa", title: "B2B + RMA", resp: "", date: "01-ago", comment: "" },
   { cat: "Salida 3ra etapa", title: "Defensa consumidor + Bot", resp: "", date: "01-sep", comment: "" },
@@ -694,7 +773,9 @@ function dateClass(str) {
   return 'date-future';
 }
 
-let sortCol = 'date', sortDir = 1, activeCat = 'all', searchQ = '', respQ = '', expandedRow = null;
+const ESTADO_ORDER = { "En curso": 0, "Demorado": 1, "Pendiente": 2, "Finalizado": 3 };
+
+let sortCol = 'date', sortDir = 1, activeCat = 'all', searchQ = '', respQ = '', estadoQ = '', expandedRow = null;
 
 // Responsables — ordenados alfabéticamente
 const allPersons = new Set();
@@ -736,14 +817,20 @@ function toggleSort(col) {
 
 document.getElementById('searchInput').addEventListener('input', e => { searchQ = e.target.value.toLowerCase(); expandedRow = null; render(); });
 respFilterEl.addEventListener('change', e => { respQ = e.target.value; expandedRow = null; render(); });
+document.getElementById('estadoFilter').addEventListener('change', e => { estadoQ = e.target.value; expandedRow = null; render(); });
+
+function getEstado(idx) {
+  return estadoMap[idx] || 'Pendiente';
+}
 
 function getFiltered() {
-  return TASKS.filter(t => {
+  return TASKS.filter((t, i) => {
     if (activeCat !== 'all' && t.cat !== activeCat) return false;
     if (respQ && !t.resp.toLowerCase().includes(respQ.toLowerCase())) return false;
     if (searchQ && !(t.cat+t.title+t.resp+t.comment).toLowerCase().includes(searchQ)) return false;
+    if (estadoQ && getEstado(i) !== estadoQ) return false;
     return true;
-  });
+  }).map((t, _, arr) => ({ ...t, _origIdx: TASKS.indexOf(t) }));
 }
 
 function getSorted(arr) {
@@ -752,6 +839,9 @@ function getSorted(arr) {
     if (sortCol === 'date') {
       const da = parseDate(a.date), db = parseDate(b.date);
       va = da ? da.getTime() : Infinity; vb = db ? db.getTime() : Infinity;
+    } else if (sortCol === 'estado') {
+      va = ESTADO_ORDER[getEstado(a._origIdx)] ?? 99;
+      vb = ESTADO_ORDER[getEstado(b._origIdx)] ?? 99;
     } else if (sortCol === 'comment') {
       va = a.comment ? 1 : 0; vb = b.comment ? 1 : 0;
     } else {
@@ -794,8 +884,11 @@ function render() {
   }
 
   sorted.forEach((task, idx) => {
+    const origIdx = task._origIdx;
     const color = CAT_COLORS[task.cat] || 'var(--accent)';
     const dc = dateClass(task.date);
+    const currentEstado = getEstado(origIdx);
+
     const tr = document.createElement('tr');
     tr.className = 'fade-row';
     if (task.comment) tr.classList.add('clickable');
@@ -809,11 +902,30 @@ function render() {
       <td class="title-cell">${task.title}</td>
       <td>${renderResp(task.resp)}</td>
       <td class="date-cell ${dc}">${task.date || '—'}</td>
+      <td style="vertical-align:middle">
+        <select class="estado-select" data-v="${currentEstado}" data-orig="${origIdx}">
+          <option value="Pendiente"${currentEstado==='Pendiente'?' selected':''}>⏳ Pendiente</option>
+          <option value="En curso"${currentEstado==='En curso'?' selected':''}>🔵 En curso</option>
+          <option value="Demorado"${currentEstado==='Demorado'?' selected':''}>🔴 Demorado</option>
+          <option value="Finalizado"${currentEstado==='Finalizado'?' selected':''}>✅ Finalizado</option>
+        </select>
+      </td>
       <td>${task.comment ? '<span class="has-comment">💬 Ver nota</span>' : '<span style="color:var(--border-light);font-size:12px">—</span>'}</td>
     `;
 
+    // Estado change handler
+    const sel = tr.querySelector('.estado-select');
+    sel.addEventListener('change', e => {
+      e.stopPropagation();
+      const newVal = e.target.value;
+      estadoMap[origIdx] = newVal;
+      saveEstados(estadoMap);
+      e.target.dataset.v = newVal;
+    });
+
     if (task.comment) {
-      tr.addEventListener('click', () => {
+      tr.addEventListener('click', e => {
+        if (e.target.tagName === 'SELECT' || e.target.closest('select')) return;
         const existing = body.querySelector('.expand-row');
         if (existing) existing.remove();
         const wasExpanded = expandedRow === idx;
@@ -823,7 +935,7 @@ function render() {
           tr.classList.add('expanded');
           const expTr = document.createElement('tr');
           expTr.className = 'expand-row';
-          expTr.innerHTML = `<td colspan="6"><div class="expand-content">${task.comment}</div></td>`;
+          expTr.innerHTML = `<td colspan="7"><div class="expand-content">${task.comment}</div></td>`;
           tr.insertAdjacentElement('afterend', expTr);
         }
       });
@@ -851,27 +963,32 @@ document.getElementById('dlBtn').addEventListener('click', () => {
   const wb = XLSX.utils.book_new();
 
   // ── Hoja 1: Tareas ──
-  const wsData = [["Categoría", "Tarea", "Responsables", "Fecha necesidad", "Comentario"]];
-  filtered.forEach(t => wsData.push([t.cat, t.title, t.resp, t.date || "", t.comment || ""]));
+  const wsData = [["Categoría", "Tarea", "Responsables", "Fecha necesidad", "Estado", "Comentario"]];
+  filtered.forEach(t => wsData.push([t.cat, t.title, t.resp, t.date || "", getEstado(t._origIdx), t.comment || ""]));
   const ws = XLSX.utils.aoa_to_sheet(wsData);
-  ws['!cols'] = [{ wch: 36 }, { wch: 58 }, { wch: 52 }, { wch: 14 }, { wch: 52 }];
+  ws['!cols'] = [{ wch: 36 }, { wch: 58 }, { wch: 52 }, { wch: 14 }, { wch: 14 }, { wch: 52 }];
 
   const hdrStyle = {
     font: { bold: true, color: { rgb: "FFFFFF" }, sz: 11, name: "Arial" },
     fill: { fgColor: { rgb: "1A1D2E" } },
     alignment: { horizontal: "center", vertical: "center", wrapText: true },
   };
-  ['A1','B1','C1','D1','E1'].forEach(c => { if (ws[c]) ws[c].s = hdrStyle; });
+  ['A1','B1','C1','D1','E1','F1'].forEach(c => { if (ws[c]) ws[c].s = hdrStyle; });
+
+  const ESTADO_BG = { "En curso": "D6E4FF", "Demorado": "FFE4E4", "Pendiente": "F5F6FA", "Finalizado": "E6F9F1" };
+  const ESTADO_FG = { "En curso": "1A3AB8", "Demorado": "A01818", "Pendiente": "4A5070", "Finalizado": "0F6040" };
 
   filtered.forEach((task, i) => {
     const row = i + 2;
     const catColor = CAT_HEX[task.cat] || "3D63FF";
     const rowBg = i % 2 === 0 ? "FFFFFF" : "F5F6FA";
+    const est = getEstado(task._origIdx);
     const base = { font: { sz: 10, name: "Arial" }, fill: { fgColor: { rgb: rowBg } }, alignment: { vertical: "top", wrapText: true }, border: { bottom: { style: "thin", color: { rgb: "E0E3F0" } } } };
     const catS = { ...base, font: { sz: 10, name: "Arial", bold: true, color: { rgb: catColor } } };
-    ['A','B','C','D','E'].forEach((c, ci) => {
+    const estS = { font: { sz: 10, name: "Arial", bold: true, color: { rgb: ESTADO_FG[est] || "4A5070" } }, fill: { fgColor: { rgb: ESTADO_BG[est] || "F5F6FA" } }, alignment: { horizontal: "center", vertical: "center" }, border: { bottom: { style: "thin", color: { rgb: "E0E3F0" } } } };
+    ['A','B','C','D','E','F'].forEach((c, ci) => {
       const ref = `${c}${row}`;
-      if (ws[ref]) ws[ref].s = ci === 0 ? catS : base;
+      if (ws[ref]) ws[ref].s = ci === 0 ? catS : ci === 4 ? estS : base;
     });
   });
 
@@ -946,7 +1063,6 @@ function buildTimeline() {
     const tr = document.createElement('tr');
     tr.className = 'tl-cat-row';
 
-    // label cell
     const labelTd = document.createElement('td');
     labelTd.className = 'tl-cat-label';
     labelTd.innerHTML = `<div class="tl-cat-name">
@@ -955,7 +1071,6 @@ function buildTimeline() {
     </div>`;
     tr.appendChild(labelTd);
 
-    // month cells
     TL_MONTHS.forEach(month => {
       const td = document.createElement('td');
       td.className = 'tl-month-col';
@@ -986,7 +1101,6 @@ function buildTimeline() {
     body.appendChild(tr);
   });
 
-  // Legend
   const legend = document.getElementById('tlLegend');
   legend.innerHTML = '<span style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-right:4px">Referencias:</span>';
   TL_CATS.forEach(cat => {
@@ -997,7 +1111,6 @@ function buildTimeline() {
   });
 }
 
-// Toggle
 const tlBtn   = document.getElementById('tlBtn');
 const tlPanel = document.getElementById('tlPanel');
 let tlBuilt   = false;
