@@ -554,6 +554,31 @@
     border-color: #4ecb8d;
     color: #4ecb8d;
   }
+
+  /* ── ESTADO FIJO (no editable) ── */
+  .estado-fixed {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    width: 130px;
+    cursor: default;
+  }
+  .estado-fixed[data-v="Finalizado"] {
+    background-color: #eafaf2;
+    border-color: #1a9e62;
+    color: #0f6040;
+  }
+  [data-theme="dark"] .estado-fixed[data-v="Finalizado"] {
+    background-color: rgba(78,203,141,0.12);
+    border-color: #4ecb8d;
+    color: #4ecb8d;
+  }
 </style>
 </head>
 <body>
@@ -573,7 +598,7 @@
   <div class="header-sub">Seguimiento de tareas críticas para la salida a producción</div>
   <div class="header-stats">
     <div class="stat">
-      <span class="stat-value" id="stat-total">27</span>
+      <span class="stat-value" id="stat-total">29</span>
       <span class="stat-label">Tareas totales</span>
     </div>
     <div class="stat-divider"></div>
@@ -649,7 +674,7 @@
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     Subtítulo
   </button>
-  <span class="count-badge">Mostrando <span id="visibleCount">27</span> de <span id="totalCount">27</span></span>
+  <span class="count-badge">Mostrando <span id="visibleCount">29</span> de <span id="totalCount">29</span></span>
   <button class="dl-btn" id="dlBtn" title="Descargar lista en Excel">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Exportar Excel
@@ -713,13 +738,14 @@ const estadoMap = loadEstados(); // { taskIndex: "En curso" | "Pendiente" | "Dem
 // ── Data ──
 const TASKS = [
   { cat: "Gestión de partes", title: "Cierre de inventario físico de Service", resp: "Ángel Graneros / Erick Pineda", date: "08-jun", comment: "" },
-  { cat: "Gestión de partes", title: "Matching de códigos Ciber vs. Epicor para detectar partes a crear", resp: "Maximiliano Sanchez Almeida / Debora Acuña", date: "20-may", comment: "" },
+  { cat: "Gestión de partes", title: "Matching de códigos Ciber vs. Epicor para detectar partes a crear", resp: "Maximiliano Sanchez Almeida / Debora Acuña", date: "20-may", comment: "", defaultEstado: "Finalizado", fixedEstado: "Finalizado" },
   { cat: "Gestión de partes", title: "Definir stock que migra, scrap y obsoletos post inventario", resp: "Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda", date: "11-jun", comment: "Con esta definición, Sistemas realizará un nuevo cruce con Epicor para enviar qué información tenemos de estas partes y completar lo pendiente." },
   { cat: "Gestión de partes", title: "Registrar previamente en Ciber todos los ajustes de stock", resp: "Maximiliano Sanchez Almeida / Ángel Graneros / Erick Pineda", date: "12-jun", comment: "" },
-  { cat: "Gestión de partes", title: "Validar posible restricción aduanera para placas desde Río Grande", resp: "Julieta Franco / Fábrica", date: "27-may", comment: "" },
+  { cat: "Gestión de partes", title: "Validar posible restricción aduanera para placas desde Río Grande", resp: "Julieta Franco / Fábrica", date: "27-may", comment: "Se define que se pueden declarar placas desde Río Grande a Buenos Aires, por lo que se debe definir un nuevo procedimiento a realizar por la planta.\n\nEstá pendiente coordinar una reunión con Mauricio (Sistemas).\n\n⚠ Además se debe considerar que esta declaración de placas se realizará luego de la salida de Salesforce: vendrán declaradas las nuevas placas.", defaultEstado: "En curso" },
   { cat: "Gestión de partes", title: "Procedimiento escrito de compra y gestión de partes de Service (vital parts, FOC, CBUs)", resp: "Julieta Franco / Planificación", date: "15-jun", comment: "" },
-  { cat: "Valuación contable", title: "Definir si el inventario migra con los costos actuales de Ciber o recálculo de todos los costos", resp: "Claudio Fernandez / Gabriela Duarte / Erick Pineda", date: "29-may", comment: "Para piloto se definen para pruebas:\n• P 158 a la lista de precios de repuestos.\n• P 164 lista de costos\n• Precio Ciber sin impuestos — muestra de 50 productos.\n• Precio de Ciber multiplicado por el tipo de cambio.\n• Lista de costos con lo actual de Ciber." },
-  { cat: "Valuación contable", title: "Validación y documentación con Auditoría (E&Y)", resp: "Claudio Fernandez / Gabriela Duarte / Erick Pineda", date: "05-jun", comment: "" },
+  { cat: "Gestión de partes", title: "Matching de códigos Ciber vs. Epicor — post cierre de inventario físico", resp: "", date: "22-jun", comment: "", defaultEstado: "En curso" },
+  { cat: "Valuación contable", title: "Definir si el inventario migra con los costos actuales de Ciber o recálculo de todos los costos", resp: "Claudio Fernandez / Gabriela Duarte / Erick Pineda", date: "29-may", comment: "Para piloto se definen para pruebas:\n• P 158 a la lista de precios de repuestos.\n• P 164 lista de costos.\n• Precio de Ciber multiplicado por el tipo de cambio.\n• Lista de costos con lo actual de Ciber.\n\nSe envió una muestra de productos. Está pendiente asociar a la nueva lista de precios los conceptos de mano de obra y envío para realizar pruebas.", defaultEstado: "En curso" },
+  { cat: "Valuación contable", title: "Validación y documentación con Auditoría (E&Y)", resp: "Claudio Fernandez / Gabriela Duarte / Erick Pineda", date: "05-jun", comment: "Pendiente de enviar la resolución.", defaultEstado: "En curso" },
   { cat: "Migración de Inventario", title: "DMT migración Epicor Piloto", resp: "Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas / Erick Pineda", date: "15-jun", comment: "" },
   { cat: "Migración de Inventario", title: "DMT migración Epicor Productivo", resp: "Ángel Graneros / Maximiliano Sanchez Almeida / Gabriela Duarte / Sistemas / Erick Pineda", date: "01-jul", comment: "" },
   { cat: "Posiciones arancelarias e impuestos", title: "Carga de posiciones arancelarias en Epicor de todas las partes vendibles", resp: "Julieta Franco / Comex", date: "12-jun", comment: "" },
@@ -727,18 +753,19 @@ const TASKS = [
   { cat: "Posiciones arancelarias e impuestos", title: "Definir integración Epicor ↔ Tarifa (post salida SF)", resp: "Julieta Franco / Comex", date: "01-sep", comment: "" },
   { cat: "Posiciones arancelarias e impuestos", title: "Definir circuito de actualización y comunicación de cambios arancelarios", resp: "Julieta Franco / Elizabeth Oberkersch", date: "19-jun", comment: "" },
   { cat: "Posiciones arancelarias e impuestos", title: "Verificar situación impositiva de repuestos disponibles para la venta", resp: "Elizabeth Oberkersch", date: "19-jun", comment: "" },
-  { cat: "Facturación", title: "Definir modelo de facturación Epicor y revisión de facturas actuales", resp: "Elizabeth Oberkersch", date: "05-jun", comment: "La facturación pasará al modelo Epicor (Radio Victoria).\nRevisión de muestra de facturas actuales.\nPendiente definir si repuesto, mano de obra y gasto de envío se facturan separados o integrados.\n\nEsta definición permite avanzar con el desarrollo de la facturación para:\n• B2C — Consumidor final\n• B2B — Venta de partes a agentes"  },
+  { cat: "Facturación", title: "Definir modelo de facturación Epicor y revisión de facturas actuales", resp: "Elizabeth Oberkersch", date: "05-jun", comment: "La facturación pasará al modelo Epicor (Radio Victoria).\n\n• B2C — Reparaciones a consumidores finales: una factura que incluye parte, mano de obra y flete.\n• B2B — Venta de partes a agentes: una factura que incluye parte y fletes.\n\nA definir:\n• ¿El flete se debe prorratear o mantener discriminado? En caso de prorratear, definir cómo será el prorrateo.\n• Bonificación en mano de obra y flete: existe la posibilidad de que ambos conceptos estén bonificados para el cliente (precio 0 en el ecommerce). Esto debe considerarse para Facturación electrónica, ya que el mínimo es $0,05 — esto implica que el ecommerce mande precio 0 y Epicor deba agregar por regla el valor mínimo de $0,05.\n• Definir impuestos para servicios: mano de obra y flete.\n• Flete: al momento existen dos fletes, Fastrack (454) o Andreani (794).\n• Cuentas que aplican sobre estos nuevos servicios: se debe dar de alta un nuevo concepto, o podríamos usar el concepto de flete ENV1, como está en ecommerce.", defaultEstado: "En curso" },
   { cat: "Política de precios", title: "Definir política de precios, listas B2B/B2C y criterios de cálculo", resp: "Julieta Franco / Claudio Fernandez / Gabriela Duarte / Maximiliano Sanchez Almeida", date: "10-jun", comment: "" },
   { cat: "Política de precios", title: "Carga de nuevas listas de precio en Epicor (Piloto)", resp: "Claudio Fernandez / Gabriela Duarte", date: "15-jun", comment: "" },
   { cat: "Política de precios", title: "Carga de nuevas listas de precio en Epicor (Producción)", resp: "Claudio Fernandez / Gabriela Duarte", date: "19-jun", comment: "" },
-  { cat: "Clientes y cuentas corrientes", title: "Envío de listado de clientes activos", resp: "Maximiliano Sanchez Almeida", date: "08-jun", comment: "Se migrarán clientes con movimientos en los últimos 18 meses y comprobantes abiertos. La cuenta corriente histórica permanecerá en Ciber.\n\nAlta de clientes en Epicor – Proceso acordado:\n\n1. Postventa deberá enviar los mails de todos los agentes en curso.\n   Responsable: Maximiliano Sanchez Almeida — ✅ FINALIZADO\n\n2. Impuestos deberá enviar el formato del mail junto con los datos necesarios para el armado del legajo.\n   Responsable: Elizabeth Oberkersch — ✅ FINALIZADO\n\n3. Sistemas enviará el mail masivo y recopilará los datos para remitirlos a Créditos.\n   Responsable: Debora Acuña — 🔵 EN CURSO\n\n→ Plazo tentativo: envío del mail esta semana (12/06).\n\n⚠ Plazo de respuesta de los agentes: 1 semana. // 19-Junio se enviará a Créditos la información completa de los clientes. Los clientes que no tengan información actualizada se darán de alta en Epicor como \"inhabilitados\"." },
+  { cat: "Clientes y cuentas corrientes", title: "Envío de listado de clientes activos", resp: "Maximiliano Sanchez Almeida", date: "08-jun", comment: "Se generó un formulario de carga de registros para los agentes: https://registrosst.radiovictoria.com.ar/\n\nAl momento, de los 298 agentes completaron el registro 27. De estos 27, tienen saldo o movimiento en el último año 12 registros.\n\nEstaremos disponibilizando los registros en una carpeta de SharePoint junto con los adjuntos.\n\nNormalización de datos:\nEstamos observando que algunos agentes cargan la constancia de ARCA de diferentes maneras. ¿Se debería establecer un formato en particular? A definir con Impuestos.\n\n⚠ Plazo de respuesta de los agentes: 1 semana. // 23-Junio se enviará a Créditos la información completa de los clientes. Los clientes que no tengan información actualizada se darán de alta en Epicor como \"inhabilitados\".", defaultEstado: "En curso" },
   { cat: "Clientes y cuentas corrientes", title: "Validación impositiva", resp: "Elizabeth Oberkersch / Patricio Cetrángolo", date: "15-jun", comment: "Una vez finalizada la revisión de clientes por parte de Auditoría, se definirán los clientes a migrar y se procederá a solicitar los legajos impositivos correspondientes." },
-  { cat: "Clientes y cuentas corrientes", title: "Alta masiva de clientes en Epicor (Piloto)", resp: "Patricio Cetrángolo", date: "01-jun", comment: "Definiciones para el alta — conceptos generales para postventa: \"Agentes Postventa\"\n• Unidad de negocio, vendedor y territorio\n• Grupo: Agentes\n• Términos de cobro: Pago contado\n• Transporte: debido a que el transporte se asigna según la zona de cobertura en el ecommerce, no se crea este dato como genérico — se toma el dato del sitio.\n\nAmbiente piloto:\nEjecución del padrón para CUITs de muestra:\n• 20127825131\n• 20129118890\n• 20131291923 (Misiones)\n• 20164949266 (Santa Fe)\n• 20174706175 (La Pampa)\n\nLuego de esta ejecución del padrón surgieron errores que estamos analizando: errores en la alícuota, errores en la información del convenio informado."  },
+  { cat: "Clientes y cuentas corrientes", title: "Alta masiva de clientes en Epicor (Piloto)", resp: "Patricio Cetrángolo", date: "01-jun", comment: "Ambiente piloto:\nEjecución del padrón para CUITs de muestra:\n• 20127825131\n• 20129118890\n• 20131291923 (Misiones)\n• 20164949266 (Santa Fe)\n• 20174706175 (La Pampa)\n\nLuego de esta ejecución del padrón surgieron errores que estamos analizando: errores en la alícuota, errores en la información del convenio informado.\n\nPendiente:\n• A definir por Epicor: vendedor y territorio, unidad de negocio.\n• Transporte: en la última reunión de status surgió la posibilidad de asignar el transporte genérico 999, ya que con la integración de la venta este dato viene discriminado con el flete que se utiliza desde el ecommerce (ejemplo: Andreani se envía como 794).\n\nDefiniciones:\n• Grupo: Agentes.\n• Términos de cobro: Pago contado.", defaultEstado: "En curso" },
   { cat: "Clientes y cuentas corrientes", title: "Alta masiva de clientes en Epicor (Productivo)", resp: "Patricio Cetrángolo", date: "29-jun", comment: "" },
-  { cat: "Clientes y cuentas corrientes", title: "Migración de saldo de clientes a Epicor (Piloto)", resp: "Patricio Cetrángolo / Maximiliano Sanchez Almeida", date: "01-jun", comment: "Luego de corregir el padrón para los casos de ejemplo, podemos subir los saldos:\n\n• 20127825131 — TURCUMAN CARLOS ALBERTO (L. Marrón)\n  15/4/2024 | Cobranza a Cliente | X0000-00022415 | -$35.268,92\n\n• 20164949266 — CASARINI PEDRO DAVID\n  22/9/2025 | Cobranza a Cliente | X0000-00024872 | -$15.775,25\n  Saldo Cliente: -$15.775,25\n\n• 20174706175 — HAPPEL MIGUEL ANGEL (Suc. Santa Rosa 1)\n  6/8/2024 | Cobranza a Cliente | X0000-00023028 | -$36.677,20" },
+  { cat: "Clientes y cuentas corrientes", title: "Migración de saldo de clientes a Epicor (Piloto)", resp: "Patricio Cetrángolo / Maximiliano Sanchez Almeida", date: "01-jun", comment: "Se enviaron los clientes con saldo existente para realizar una prueba de alta de cobranzas en Epicor.\n\n• 20127825131 — TURCUMAN CARLOS ALBERTO (L. Marrón)\n  15/4/2024 | Cobranza a Cliente | X0000-00022415 | -$35.268,92\n\n• 20164949266 — CASARINI PEDRO DAVID\n  22/9/2025 | Cobranza a Cliente | X0000-00024872 | -$15.775,25\n  Saldo Cliente: -$15.775,25\n\n• 20174706175 — HAPPEL MIGUEL ANGEL (Suc. Santa Rosa 1)\n  6/8/2024 | Cobranza a Cliente | X0000-00023028 | -$36.677,20", defaultEstado: "En curso" },
   { cat: "Clientes y cuentas corrientes", title: "Migración de saldo de clientes a Epicor (Productivo)", resp: "Patricio Cetrángolo / Maximiliano Sanchez Almeida", date: "01-jul", comment: "" },
   { cat: "Salida 2da etapa", title: "B2B + RMA", resp: "", date: "01-ago", comment: "" },
   { cat: "Salida 3ra etapa", title: "Defensa consumidor + Bot", resp: "", date: "01-sep", comment: "" },
+  { cat: "Gestión de partes", title: "Pruebas Salesforce - Epicor", resp: "", date: "", comment: "Integración para solicitud de repuestos:\n• Orden de transferencia.\n• Nuevo proceso de canje.\n• Reintegro (pedido de pago).", defaultEstado: "En curso" },
 ];
 
 const CAT_COLORS = {
@@ -820,7 +847,9 @@ respFilterEl.addEventListener('change', e => { respQ = e.target.value; expandedR
 document.getElementById('estadoFilter').addEventListener('change', e => { estadoQ = e.target.value; expandedRow = null; render(); });
 
 function getEstado(idx) {
-  return estadoMap[idx] || 'Pendiente';
+  if (estadoMap[idx]) return estadoMap[idx];
+  const t = TASKS[idx];
+  return (t && t.defaultEstado) || 'Pendiente';
 }
 
 function getFiltered() {
@@ -856,6 +885,18 @@ function getSorted(arr) {
 function renderResp(resp) {
   if (!resp) return '<span style="color:var(--border-light);font-size:12px">—</span>';
   return resp.split('/').map(p => `<span class="resp-tag">${p.trim()}</span>`).join('');
+}
+
+function renderEstadoCell(task, origIdx, currentEstado) {
+  if (task.fixedEstado) {
+    return `<span class="estado-fixed" data-v="${task.fixedEstado}">✅ ${task.fixedEstado}</span>`;
+  }
+  return `<select class="estado-select" data-v="${currentEstado}" data-orig="${origIdx}">
+      <option value="Pendiente"${currentEstado==='Pendiente'?' selected':''}>⏳ Pendiente</option>
+      <option value="En curso"${currentEstado==='En curso'?' selected':''}>🔵 En curso</option>
+      <option value="Demorado"${currentEstado==='Demorado'?' selected':''}>🔴 Demorado</option>
+      <option value="Finalizado"${currentEstado==='Finalizado'?' selected':''}>✅ Finalizado</option>
+    </select>`;
 }
 
 function render() {
@@ -903,25 +944,22 @@ function render() {
       <td>${renderResp(task.resp)}</td>
       <td class="date-cell ${dc}">${task.date || '—'}</td>
       <td style="vertical-align:middle">
-        <select class="estado-select" data-v="${currentEstado}" data-orig="${origIdx}">
-          <option value="Pendiente"${currentEstado==='Pendiente'?' selected':''}>⏳ Pendiente</option>
-          <option value="En curso"${currentEstado==='En curso'?' selected':''}>🔵 En curso</option>
-          <option value="Demorado"${currentEstado==='Demorado'?' selected':''}>🔴 Demorado</option>
-          <option value="Finalizado"${currentEstado==='Finalizado'?' selected':''}>✅ Finalizado</option>
-        </select>
+        ${renderEstadoCell(task, origIdx, currentEstado)}
       </td>
       <td>${task.comment ? '<span class="has-comment">💬 Ver nota</span>' : '<span style="color:var(--border-light);font-size:12px">—</span>'}</td>
     `;
 
-    // Estado change handler
-    const sel = tr.querySelector('.estado-select');
-    sel.addEventListener('change', e => {
-      e.stopPropagation();
-      const newVal = e.target.value;
-      estadoMap[origIdx] = newVal;
-      saveEstados(estadoMap);
-      e.target.dataset.v = newVal;
-    });
+    // Estado change handler (solo si es editable)
+    const sel = tr.querySelector('select.estado-select');
+    if (sel) {
+      sel.addEventListener('change', e => {
+        e.stopPropagation();
+        const newVal = e.target.value;
+        estadoMap[origIdx] = newVal;
+        saveEstados(estadoMap);
+        e.target.dataset.v = newVal;
+      });
+    }
 
     if (task.comment) {
       tr.addEventListener('click', e => {
